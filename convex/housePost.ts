@@ -48,11 +48,8 @@ export const getHouses = query({
         .collect();
     }
 
-    // no filters — return all available
-    return await ctx.db
-      .query("housePost")
-      .withIndex("by_availability", (q) => q.eq("isAvailable", true))
-      .collect();
+    // no filters — return all house
+    return await ctx.db.query("housePost").order("desc").collect();
   },
 });
 // ```

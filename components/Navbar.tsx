@@ -9,7 +9,7 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "./ui/sheet";
 const Navbar = () => {
   const navLink = [
     { name: "Home", hrefs: "/" },
-    { name: "Listing", hrefs: "/listing" },
+    { name: "Dashboard", hrefs: "/dashboard" },
   ];
 
   return (
