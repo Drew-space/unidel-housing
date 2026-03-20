@@ -16,7 +16,13 @@ export const createUser = mutation({
       .unique();
 
     if (existingUser) {
-      console.log("User already exists");
+      await ctx.db.patch(existingUser._id, {
+        email: args.email,
+        name: args.name,
+        imageUrl: args.imageUrl,
+        username: args.username,
+        updatedAt: Date.now(),
+      });
       return existingUser._id;
     }
 

@@ -53,8 +53,6 @@ const clerkwebhook = httpAction(async (ctx, request) => {
         imageUrl: image_url || "",
         username: username || email.split("@")[0],
       });
-
-      // console.log(eventData);
     } catch (error) {
       console.log("error creating user in convex", error);
       return new Response("error occured", { status: 500 });
@@ -73,9 +71,7 @@ const clerkwebhook = httpAction(async (ctx, request) => {
   //   }
   // }
 
-  return new Response("Webhook processed successfully", { status: 200 }); // 👈 also update this message
-
-  return new Response("User created successfully", { status: 200 });
+  return new Response("Webhook processed successfully", { status: 200 });
 });
 
 http.route({
