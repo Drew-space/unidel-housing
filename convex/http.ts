@@ -39,7 +39,8 @@ const clerkwebhook = httpAction(async (ctx, request) => {
   const eventType = evt.type;
 
   if (eventType === "user.created") {
-    const { email_addresses, first_name, id, last_name, image_url } = evt.data;
+    const { email_addresses, first_name, id, last_name, image_url, username } =
+      evt.data;
     // const eventData = evt.data;
     const email = email_addresses[0]?.email_address;
     const name = `${first_name || ""} ${last_name || ""}`.trim();
@@ -50,6 +51,7 @@ const clerkwebhook = httpAction(async (ctx, request) => {
         name,
         clerkId: id,
         imageUrl: image_url || "",
+        username: username || email.split("@")[0],
       });
 
       // console.log(eventData);

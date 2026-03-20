@@ -7,6 +7,7 @@ export const createUser = mutation({
     name: v.string(),
     clerkId: v.string(),
     imageUrl: v.string(),
+    username: v.string(),
   },
   handler: async (ctx, args) => {
     const existingUser = await ctx.db
@@ -24,6 +25,7 @@ export const createUser = mutation({
       name: args.name,
       clerkId: args.clerkId,
       imageUrl: args.imageUrl,
+      username: args.username,
       updatedAt: Date.now(),
     });
 
