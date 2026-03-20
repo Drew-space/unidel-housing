@@ -88,7 +88,11 @@ const Navbar = () => {
         {/* Only visible when signed out */}
         <Show when="signed-out">
           <SignInButton mode="modal">
-            <Button size="sm" className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              className="flex items-center gap-2"
+            >
               Login
             </Button>
           </SignInButton>

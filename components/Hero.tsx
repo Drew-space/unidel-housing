@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import {
   Combobox,
   ComboboxContent,
@@ -9,11 +11,21 @@ import {
 } from "./ui/combobox";
 import { Button } from "./ui/button";
 
+import { api } from "@/convex/_generated/api";
+import { useQuery } from "convex/react";
+import HouseCard from "./HouseCard";
+
 type Location = "owa-alero" | "alihame" | "owo-yibo";
 type RoomType = "bed_sitter" | "single_room" | "room_and_parlor";
 
 const Hero = () => {
-  const frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"];
+  const [location, setLocation] = useState<Location | undefined>();
+  const [roomType, setRoomType] = useState<RoomType | undefined>();
+
+  const houses = useQuery(api.housePost.getHouses, {
+    location,
+    roomType,
+  });
 
   const LOCATIONS: { value: Location; label: string }[] = [
     { value: "owa-alero", label: "Owa-Alero" },
@@ -27,10 +39,10 @@ const Hero = () => {
     { value: "room_and_parlor", label: "Room & Parlor" },
   ];
   return (
-    <section className="mx-auto container">
+    <section className="mx-auto container max-sm:px-4">
       <div className="mt-14 ">
         <p className="text-amber-950/90">Student Housing Made Easy</p>
-        <h1 className="md:text-5xl font-bold">
+        <h1 className="md:text-5xl text-3xl font-bold">
           Find your perfect
           <br /> hostel near campus
         </h1>
@@ -40,7 +52,7 @@ const Hero = () => {
       <div className="flex flex-col md:flex-row gap-4 mt-6 ">
         <div className="">
           <Combobox items={LOCATIONS}>
-            <ComboboxInput placeholder="Choose location" />
+            <ComboboxInput placeholder="Location" />
             <ComboboxContent>
               <ComboboxEmpty>No items found.</ComboboxEmpty>
               <ComboboxList>
@@ -56,7 +68,7 @@ const Hero = () => {
         {/*  */}
         <div className="">
           <Combobox items={ROOM_TYPES}>
-            <ComboboxInput placeholder="Choose your room type" />
+            <ComboboxInput placeholder="Room type" />
             <ComboboxContent>
               <ComboboxEmpty>No items found.</ComboboxEmpty>
               <ComboboxList>
@@ -71,11 +83,14 @@ const Hero = () => {
         </div>
         <Button variant="outline">Clear</Button>
       </div>
+
+      <HouseCard />
     </section>
   );
 };
 
 export default Hero;
+
 // "use client";
 
 // import { useQuery } from "convex/react";
