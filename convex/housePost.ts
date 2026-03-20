@@ -52,6 +52,13 @@ export const getHouses = query({
     return await ctx.db.query("housePost").order("desc").collect();
   },
 });
+
+export const getHouseById = query({
+  args: { id: v.id("housePost") },
+  handler: async (ctx, args) => {
+    return await ctx.db.get(args.id);
+  },
+});
 // ```
 
 // On the frontend it would just be two dropdowns:

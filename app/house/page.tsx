@@ -15,6 +15,7 @@ import {
   ComboboxList,
 } from "@/components/ui/combobox";
 import HouseCard from "@/components/HouseCard";
+import Link from "next/link";
 
 type Location = "owa-alero" | "alihame" | "owo-yibo";
 type RoomType = "bed_sitter" | "single_room" | "room_and_parlor";
@@ -56,7 +57,7 @@ const Hero = () => {
       </div>
 
       {/* search inputs */}
-      <div className="flex flex-col md:flex-row gap-4 mt-6 ">
+      <div className="flex flex-row  md:flex-row gap-4 mt-6 ">
         {/* location filter */}
         <div>
           <Combobox
@@ -109,9 +110,11 @@ const Hero = () => {
           Clear
         </Button>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 mt-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 mt-8 gap-4">
         {houses?.map((house) => (
-          <HouseCard key={house._id} {...house} />
+          <Link href={`/house/${house._id}`} key={house._id}>
+            <HouseCard {...house} />
+          </Link>
         ))}
       </div>
     </section>
