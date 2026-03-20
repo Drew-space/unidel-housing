@@ -40,7 +40,7 @@ export default defineSchema({
     propertyType: v.union(
       v.literal("fenced_compound"),
       v.literal("bungalow"),
-      v.literal("other"),
+      v.literal("story_building"),
     ),
 
     amenities: v.array(
@@ -61,5 +61,7 @@ export default defineSchema({
   })
     .index("by_author", ["authorId"])
     .index("by_location", ["location"])
+    .index("by_roomType", ["roomType"])
+    .index("by_location_and_roomType", ["location", "roomType"]) // combined filter
     .index("by_availability", ["isAvailable"]),
 });
