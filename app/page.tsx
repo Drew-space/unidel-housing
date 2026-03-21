@@ -4,7 +4,6 @@ import Hero from "./house/page";
 export default function Home() {
   return (
     <div>
-      <Navbar />
       <Hero />
     </div>
   );
