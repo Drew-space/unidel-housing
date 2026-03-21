@@ -16,6 +16,7 @@ export default defineSchema({
     description: v.string(),
     content: v.string(),
     imageUrl: v.string(),
+    images: v.optional(v.array(v.string())),
     authorId: v.id("users"),
     authorName: v.string(),
     authorImage: v.string(),
