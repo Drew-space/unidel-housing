@@ -166,6 +166,54 @@
 //   );
 // }
 
+// "use client";
+
+// import {
+//   Carousel,
+//   CarouselContent,
+//   CarouselItem,
+//   CarouselNext,
+//   CarouselPrevious,
+// } from "@/components/ui/carousel";
+
+// interface ImageGalleryProps {
+//   images: string[];
+// }
+
+// export default function ImageGallery({ images }: ImageGalleryProps) {
+//   return (
+//     <Carousel className="w-full">
+//       <CarouselContent>
+//         {images.map((src, index) => (
+//           <CarouselItem key={index}>
+//             <div className="relative w-full h-[320px] md:h-[500px] rounded-xl overflow-hidden">
+//               {/* Blurred background — same image, stretched to fill */}
+//               <img
+//                 src={src}
+//                 alt=""
+//                 aria-hidden="true"
+//                 className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl brightness-75 saturate-150"
+//               />
+
+//               {/* Frosted glass overlay */}
+//               <div className="absolute inset-0 backdrop-blur-sm bg-white/10" />
+
+//               {/* Actual image — contained, no cropping */}
+//               <img
+//                 src={src}
+//                 alt={`House image ${index + 1}`}
+//                 className="relative z-10 w-full h-full object-contain"
+//               />
+//             </div>
+//           </CarouselItem>
+//         ))}
+//       </CarouselContent>
+//       <CarouselPrevious className="left-3" />
+//       <CarouselNext className="right-3" />
+//     </Carousel>
+//   );
+// }
+
 "use client";
 
 import {
@@ -182,12 +230,12 @@ interface ImageGalleryProps {
 
 export default function ImageGallery({ images }: ImageGalleryProps) {
   return (
-    <Carousel className="w-full">
+    <Carousel className="w-full relative">
       <CarouselContent>
         {images.map((src, index) => (
           <CarouselItem key={index}>
-            <div className="relative w-full h-[320px] md:h-[500px] rounded-xl overflow-hidden">
-              {/* Blurred background — same image, stretched to fill */}
+            <div className="relative w-full h-[420px] md:h-[620px] rounded-xl overflow-hidden">
+              {/* Blurred background */}
               <img
                 src={src}
                 alt=""
@@ -195,10 +243,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
                 className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl brightness-75 saturate-150"
               />
 
-              {/* Frosted glass overlay */}
-              <div className="absolute inset-0 backdrop-blur-sm bg-white/10" />
-
-              {/* Actual image — contained, no cropping */}
+              {/* Main image */}
               <img
                 src={src}
                 alt={`House image ${index + 1}`}
@@ -208,8 +253,8 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="left-3" />
-      <CarouselNext className="right-3" />
+      <CarouselPrevious className="left-3 z-20 bg-transparent border-2 border-white text-white hover:bg-white/20 hover:text-white h-10 w-10" />
+      <CarouselNext className="right-3 z-20 bg-transparent border-2 border-white text-white hover:bg-white/20 hover:text-white h-10 w-10" />
     </Carousel>
   );
 }
