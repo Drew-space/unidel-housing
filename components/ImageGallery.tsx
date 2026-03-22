@@ -81,7 +81,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
       </div>
 
       {/* Big Image */}
-      <div className="relative overflow-hidden rounded-lg bg-gray-100 lg:col-span-4">
+      <div className="relative overflow-hidden rounded-md bg-gray-100 lg:col-span-4">
         <Image
           src={bigImage}
           width={500}

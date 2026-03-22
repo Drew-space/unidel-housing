@@ -18,7 +18,7 @@ const Navbar = () => {
       <div className="flex items-center gap-6 ">
         <Link href="/">
           <h1 className="text-2xl md:text-3xl font-semibold tracking-tighter capitalize">
-            Hostel<span className="text-blue-500">Hub</span>
+            <span className="text-blue-500">Dormix</span>
           </h1>
         </Link>
 

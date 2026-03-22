@@ -13,14 +13,14 @@
     ],
     "authorId": "j97chvr5y1760dn25btzvfemhn839m3c",
     "authorName": "Enudeme Chukwuka",
-    "authorImage": "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=150",
+    "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zQkNtcVpDQVEzeTJadnNjNW5ScHgzMmJPSkcifQ",
     "price": 80000,
     "contactPhone": "08012345678",
     "location": "owa-alero",
     "roomType": "bed_sitter",
     "propertyType": "bungalow",
     "amenities": ["bed", "wardrobe", "curtains"],
-    "isAvailable": true,
+
     "updatedAt": 1774001233943
   },
   {
@@ -37,14 +37,14 @@
     ],
     "authorId": "j97chvr5y1760dn25btzvfemhn839m3c",
     "authorName": "Enudeme Chukwuka",
-    "authorImage": "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=150",
+    "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zQkNtcVpDQVEzeTJadnNjNW5ScHgzMmJPSkcifQ",
     "price": 60000,
     "contactPhone": "08023456789",
     "location": "alihame",
     "roomType": "single_room",
     "propertyType": "fenced_compound",
     "amenities": ["wardrobe", "cupboard", "kitchen_cabinet"],
-    "isAvailable": true,
+
     "updatedAt": 1774001233943
   },
   {
@@ -61,7 +61,7 @@
     ],
     "authorId": "j97chvr5y1760dn25btzvfemhn839m3c",
     "authorName": "Enudeme Chukwuka",
-    "authorImage": "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=150",
+    "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zQkNtcVpDQVEzeTJadnNjNW5ScHgzMmJPSkcifQ",
     "price": 120000,
     "contactPhone": "08034567890",
     "location": "owo-yibo",
@@ -76,7 +76,7 @@
       "curtains",
       "kitchen_cabinet"
     ],
-    "isAvailable": true,
+
     "updatedAt": 1774001233943
   },
   {
@@ -93,14 +93,14 @@
     ],
     "authorId": "j97chvr5y1760dn25btzvfemhn839m3c",
     "authorName": "Enudeme Chukwuka",
-    "authorImage": "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=150",
+    "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zQkNtcVpDQVEzeTJadnNjNW5ScHgzMmJPSkcifQ",
     "price": 50000,
     "contactPhone": "08045678901",
     "location": "alihame",
     "roomType": "bed_sitter",
     "propertyType": "bungalow",
     "amenities": ["bed", "cupboard", "curtains"],
-    "isAvailable": true,
+
     "updatedAt": 1774001233943
   },
   {
@@ -117,14 +117,14 @@
     ],
     "authorId": "j97chvr5y1760dn25btzvfemhn839m3c",
     "authorName": "Enudeme Chukwuka",
-    "authorImage": "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=150",
+    "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zQkNtcVpDQVEzeTJadnNjNW5ScHgzMmJPSkcifQ",
     "price": 70000,
     "contactPhone": "08056789012",
     "location": "owa-alero",
     "roomType": "single_room",
     "propertyType": "fenced_compound",
     "amenities": ["wardrobe", "kitchen_cabinet", "cupboard"],
-    "isAvailable": false,
+
     "updatedAt": 1774001233943
   },
   {
@@ -141,14 +141,14 @@
     ],
     "authorId": "j97chvr5y1760dn25btzvfemhn839m3c",
     "authorName": "Enudeme Chukwuka",
-    "authorImage": "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=150",
+    "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zQkNtcVpDQVEzeTJadnNjNW5ScHgzMmJPSkcifQ",
     "price": 100000,
     "contactPhone": "08067890123",
     "location": "owa-alero",
     "roomType": "room_and_parlor",
     "propertyType": "bungalow",
     "amenities": ["bed", "sofa", "dining_table", "wardrobe", "tv_stand"],
-    "isAvailable": true,
+
     "updatedAt": 1774001233943
   }
 ]

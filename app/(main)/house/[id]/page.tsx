@@ -40,7 +40,7 @@ const HousePage = async ({ params }: HousePageProps) => {
     amenities,
     authorName,
     authorImage,
-    isAvailable,
+
     imageUrl,
     images: imageArray,
   } = house;
@@ -89,19 +89,6 @@ const HousePage = async ({ params }: HousePageProps) => {
             </h2>
 
             {/* Availability */}
-            <div className="mt-3">
-              {isAvailable ? (
-                <Badge className="gap-1 bg-green-100 text-green-700 hover:bg-green-100">
-                  <CheckCircle className="h-3.5 w-3.5" />
-                  Available
-                </Badge>
-              ) : (
-                <Badge className="gap-1 bg-red-100 text-red-700 hover:bg-red-100">
-                  <XCircle className="h-3.5 w-3.5" />
-                  Taken
-                </Badge>
-              )}
-            </div>
 
             {/* Price */}
             <div className="mt-4 mb-4">
@@ -164,8 +151,9 @@ const HousePage = async ({ params }: HousePageProps) => {
           </div>
         </div>
       </div>
-      <div className="absolute fixed bottom-2 right-2">
-        <Button> contact agent</Button>
+      <div className=" animate-bounce fixed bottom-2 right-6 rounded-full">
+        {" "}
+        <img src="/whatsapp.svg" className="h-12 w-12 rounded-full" />
       </div>
     </div>
   );

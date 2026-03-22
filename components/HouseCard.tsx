@@ -12,7 +12,6 @@ type HouseCardProps = {
   authorName: string;
   authorImage: string;
   imageUrl: string;
-  isAvailable: boolean;
 };
 
 const HouseCard = ({
@@ -21,7 +20,6 @@ const HouseCard = ({
   location,
   roomType,
   imageUrl,
-  isAvailable,
 }: HouseCardProps) => {
   return (
     <div className=" bg-white cursor-pointer">
@@ -32,9 +30,6 @@ const HouseCard = ({
           alt={title}
           className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
         />
-        <span className="absolute top-2 left-2 bg-white text-black text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded-full shadow">
-          {isAvailable ? "Available" : "Taken"}
-        </span>
       </div>
 
       {/* Details */}
