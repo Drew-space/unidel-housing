@@ -148,6 +148,26 @@ export const getHouseById = query({
     return await ctx.db.get(args.id);
   },
 });
+export const getMyHouses = query({
+  args: {},
+  handler: async (ctx) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) return [];
+
+    const user = await ctx.db
+      .query("users")
+      .withIndex("by_clerkId", (q) => q.eq("clerkId", identity.subject))
+      .unique();
+    if (!user) return [];
+
+    return await ctx.db
+      .query("housePost")
+      .withIndex("by_author", (q) => q.eq("authorId", user._id))
+      .order("desc")
+      .collect();
+  },
+});
+
 // ```
 
 // On the frontend it would just be two dropdowns:

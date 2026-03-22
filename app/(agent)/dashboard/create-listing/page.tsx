@@ -385,7 +385,6 @@ export default function CreateListingPage() {
                     type="file"
                     accept="image/*"
                     multiple
-                    capture="environment"
                     className="hidden"
                     onChange={handleFileChange}
                   />
