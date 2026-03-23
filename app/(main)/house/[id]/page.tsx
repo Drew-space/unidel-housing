@@ -169,7 +169,7 @@ const HousePage = async ({ params }: HousePageProps) => {
       {/* WhatsApp FAB */}
       <a
         href={`https://wa.me/${contactPhone.replace(/^0/, "234")}?text=${encodeURIComponent(
-          `Hi, my name is [Your Name] and I'm interested in this listing: ${title}\n\nhttps://dormix.vercel.app/house/${house._id}`,
+          `Hi, my name is [Your Name] and I'm interested in this listing: ${title}\n\nhttps://ruum-nine.vercel.app/house/${house._id}`,
         )}`}
         target="_blank"
         rel="noopener noreferrer"
