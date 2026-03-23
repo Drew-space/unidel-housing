@@ -14,8 +14,8 @@ export default defineSchema({
   housePost: defineTable({
     title: v.string(),
     description: v.string(),
-    content: v.string(),
-    imageUrl: v.string(),
+
+    imageUrl: v.optional(v.string()),
     images: v.optional(v.array(v.string())),
     authorId: v.id("users"),
     authorName: v.string(),

@@ -13,12 +13,12 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="py-2 flex items-center justify-between mt-2 md:px-6 px-1 border-b ">
+    <nav className="py-2 flex items-center justify-between mt-2 md:px-6 px-1 border-b  ">
       {/* Logo and nav links */}
       <div className="flex items-center gap-6 ">
         <Link href="/">
-          <h1 className="text-2xl md:text-3xl font-semibold tracking-tighter capitalize">
-            <span className="text-blue-500">Dormix</span>
+          <h1 className="text-2xl font-sans font-extrabold md:text-5xl tracking-tighter   ">
+            RU<span className="text-[#7c3aed]">UM</span>{" "}
           </h1>
         </Link>
 
@@ -44,7 +44,7 @@ const Navbar = () => {
             <Button
               variant="outline"
               size="sm"
-              className="hidden sm:flex items-center gap-2"
+              className="hidden text-white bg-[#7c3aed] sm:flex items-center gap-2"
             >
               <LogInIcon className="h-4 w-4" />
               Logout
@@ -73,7 +73,7 @@ const Navbar = () => {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="flex items-center gap-2"
+                      className="flex  items-center gap-2"
                     >
                       <LogInIcon className="h-4 w-4" />
                       Logout
@@ -91,7 +91,7 @@ const Navbar = () => {
             <Button
               variant="outline"
               size="sm"
-              className="flex items-center gap-2"
+              className="flex items-center text-white bg-[#7c3aed] gap-2"
             >
               Login
             </Button>

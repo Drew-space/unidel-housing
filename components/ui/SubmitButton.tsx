@@ -57,7 +57,7 @@ export function HouseSubmitButton({ files, onReset }: HouseSubmitButtonProps) {
 
         const title = (formData.get("title") as string)?.trim();
         const description = (formData.get("description") as string)?.trim();
-        const content = (formData.get("content") as string)?.trim();
+        // const content = (formData.get("content") as string)?.trim();
         const price = Number(formData.get("price"));
         const contactPhone = (formData.get("contactPhone") as string)?.trim();
         const location = (
@@ -77,7 +77,7 @@ export function HouseSubmitButton({ files, onReset }: HouseSubmitButtonProps) {
         console.log("[submit] Form values:", {
           title,
           description,
-          content,
+
           price,
           contactPhone,
           location,
@@ -95,10 +95,10 @@ export function HouseSubmitButton({ files, onReset }: HouseSubmitButtonProps) {
           toast.warning("Please enter a description");
           return;
         }
-        if (!content) {
-          toast.warning("Please enter the full details");
-          return;
-        }
+        // if (!content) {
+        //   toast.warning("Please enter the full details");
+        //   return;
+        // }
         if (!price || price <= 0) {
           toast.warning("Please enter a valid price");
           return;
@@ -141,7 +141,6 @@ export function HouseSubmitButton({ files, onReset }: HouseSubmitButtonProps) {
           await createHouse({
             title,
             description,
-            content,
             price,
             contactPhone,
             location,

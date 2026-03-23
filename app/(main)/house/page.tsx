@@ -18,7 +18,15 @@ import {
 import { InputGroupAddon } from "@/components/ui/input-group";
 import HouseCard from "@/components/HouseCard";
 import Link from "next/link";
-import { MapPin, BedDouble } from "lucide-react";
+import {
+  MapPin,
+  BedDouble,
+  Trash,
+  Trash2,
+  Trash2Icon,
+  LucideTrash,
+  LucideTrash2,
+} from "lucide-react";
 
 type Location = "owa-alero" | "alihame" | "owo-yibo";
 type RoomType = "bed_sitter" | "single_room" | "room_and_parlor";
@@ -57,10 +65,10 @@ const Hero = () => {
   const houses = useQuery(api.housePost.getHouses, { location, roomType });
 
   return (
-    <section className="mx-auto container max-sm:px-4">
+    <section className=" mx-auto container max-sm:px-4">
       <div className="mt-10">
-        <p className="text-amber-950/90">Student Housing Made Easy</p>
-        <h1 className="md:text-5xl text-3xl font-bold">
+        <p className="text-[#7c3aed]">Student Housing Made Easy</p>
+        <h1 className="md:text-5xl font-mona  text-3xl font-bold">
           Find your perfect
           <br /> hostel near campus
         </h1>
@@ -75,8 +83,8 @@ const Hero = () => {
           onValueChange={(val) => setLocation((val as Location) || undefined)}
         >
           <ComboboxInput placeholder="Location">
-            <InputGroupAddon>
-              <MapPin className="size-4 text-muted-foreground" />
+            <InputGroupAddon className="">
+              <MapPin className=" text-green-500 text-size-4 " />
             </InputGroupAddon>
           </ComboboxInput>
           <ComboboxContent side="bottom">
@@ -86,7 +94,11 @@ const Hero = () => {
                 <ComboboxGroup key={group.value} items={group.items}>
                   <ComboboxCollection>
                     {(item) => (
-                      <ComboboxItem key={item.value} value={item.value}>
+                      <ComboboxItem
+                        className="font-mona"
+                        key={item.value}
+                        value={item.value}
+                      >
                         {item.label}
                       </ComboboxItem>
                     )}
@@ -105,7 +117,7 @@ const Hero = () => {
         >
           <ComboboxInput placeholder="Rooms">
             <InputGroupAddon>
-              <BedDouble className="size-4 text-muted-foreground" />
+              <BedDouble className=" text-blue-500 size-4 " />
             </InputGroupAddon>
           </ComboboxInput>
           <ComboboxContent side="bottom">
@@ -115,7 +127,11 @@ const Hero = () => {
                 <ComboboxGroup key={group.value} items={group.items}>
                   <ComboboxCollection>
                     {(item) => (
-                      <ComboboxItem key={item.value} value={item.value}>
+                      <ComboboxItem
+                        className="font-mona"
+                        key={item.value}
+                        value={item.value}
+                      >
                         {item.label}
                       </ComboboxItem>
                     )}
@@ -127,13 +143,17 @@ const Hero = () => {
         </Combobox>
 
         <Button
-          variant="outline"
+          variant="destructive"
           onClick={() => {
             setLocation(undefined);
             setRoomType(undefined);
             setClearKey((prev) => prev + 1);
           }}
         >
+          <span>
+            {" "}
+            <LucideTrash2 />{" "}
+          </span>
           Clear
         </Button>
       </div>

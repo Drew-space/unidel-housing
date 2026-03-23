@@ -12,7 +12,7 @@ export const createHousePost = mutation({
   args: {
     title: v.string(),
     description: v.string(),
-    content: v.string(),
+
     price: v.number(),
     contactPhone: v.string(),
     location: v.union(
@@ -72,7 +72,7 @@ export const createHousePost = mutation({
     await ctx.db.insert("housePost", {
       title: args.title,
       description: args.description,
-      content: args.content,
+
       price: args.price,
       contactPhone: args.contactPhone,
       location: args.location,

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Geist, Geist_Mono, Mona_Sans } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "sonner";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const mona_sans = Mona_Sans({ subsets: ["latin"], variable: "--font-sans" });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,7 +40,7 @@ export default function MainLayout({
       className={cn(
         geistSans.variable,
         geistMono.variable,
-        inter.variable,
+        mona_sans.variable,
         "h-full antialiased font-sans",
       )}
     >
@@ -48,7 +48,6 @@ export default function MainLayout({
       <TooltipProvider>
         <main className="flex-1">{children}</main>
       </TooltipProvider>
-      <Toaster />
     </div>
   );
 }

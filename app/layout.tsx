@@ -1,10 +1,27 @@
 import { ConvexClientProvider } from "@/components/providers/ConvexClientProvider";
 import "./globals.css";
 import { Metadata } from "next";
+import { Mona_Sans, Inter } from "next/font/google";
+import { Toaster } from "sonner";
 
-// app/layout.tsx
-// app/layout.tsx
+const mona_sans = Mona_Sans({
+  subsets: ["latin"],
+  variable: "--font-mona", // unique name
+  weight: ["400", "700"],
+});
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter", // unique name
+  weight: ["400", "700"],
+});
+
+// in your html tag:
+<html
+  lang="en"
+  className={`${mona_sans.variable} ${inter.variable}`}
+  suppressHydrationWarning
+></html>;
 export const metadata: Metadata = {
   title: "Ruum – Student Housing Made Easy",
   description:
@@ -25,8 +42,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
-        <ConvexClientProvider>{children}</ConvexClientProvider>
+      <body className={` ${mona_sans.variable} ${inter.variable}`}>
+        <ConvexClientProvider>
+          {children}
+          <Toaster />
+        </ConvexClientProvider>
       </body>
     </html>
   );

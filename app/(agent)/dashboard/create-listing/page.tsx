@@ -138,8 +138,9 @@ export default function CreateListingPage() {
               {/* Description */}
               <div className="flex flex-col gap-2">
                 <Label htmlFor="description">Description</Label>
-                <Input
+                <Textarea
                   id="description"
+                  className="min-h-28 max-h-48 overflow-y-auto resize-none"
                   placeholder="Short description of the property"
                   {...register("description", {
                     required: "Description is required",
@@ -157,7 +158,7 @@ export default function CreateListingPage() {
               </div>
 
               {/* Content */}
-              <div className="flex flex-col gap-2">
+              {/* <div className="flex flex-col gap-2">
                 <Label htmlFor="content">Full details</Label>
                 <Textarea
                   id="content"
@@ -176,7 +177,7 @@ export default function CreateListingPage() {
                     {errors.content.message}
                   </p>
                 )}
-              </div>
+              </div> */}
 
               {/* Price & Phone */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

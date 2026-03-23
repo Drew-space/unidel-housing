@@ -21,7 +21,7 @@ export default function DashboardPage() {
           <h1 className="md:text-5xl text-3xl font-bold">
             Welcome back,
             <br />
-            <span>{user?.firstName ?? user?.username ?? "there"}</span>
+            <span>{user?.username ?? user?.firstName ?? "there"}</span>
           </h1>
         </div>
         <Link href="/dashboard/create-listing" className={buttonVariants()}>

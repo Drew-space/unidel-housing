@@ -194,21 +194,24 @@ const HousePage = async ({ params }: HousePageProps) => {
     authorName,
     authorImage,
     description,
-    content,
+
     contactPhone,
     imageUrl,
     images: imageArray,
   } = house;
 
   const images = imageArray?.length ? imageArray : imageUrl ? [imageUrl] : [];
-
+  // bg-[#7c3aed]
   return (
     <div className="bg-white min-h-screen">
       <div className="mx-auto max-w-4xl px-4 md:px-8 mt-8 pb-24">
         {/* Back button */}
         <div className="mb-4">
           <Link href="/">
-            <Button variant="outline" className="flex items-center gap-1">
+            <Button
+              variant="outline"
+              className="text-white bg-[#7c3aed] flex items-center gap-1"
+            >
               <ArrowLeft className="h-4 w-4" />
               Go Back
             </Button>
@@ -255,19 +258,19 @@ const HousePage = async ({ params }: HousePageProps) => {
           {/* Location, Room type, Property type */}
           <div className="flex flex-wrap gap-4 text-gray-500">
             <div className="flex items-center gap-2">
-              <MapPin className="h-4 w-4 shrink-0" />
+              <MapPin className=" text-green-600 h-4 w-4 shrink-0" />
               <span className="text-sm capitalize">
                 {location.replaceAll("-", " ")}
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <BedDouble className="h-4 w-4 shrink-0" />
+              <BedDouble className=" text-blue-600 h-4 w-4 shrink-0" />
               <span className="text-sm capitalize">
                 {roomType.replaceAll("_", " ")}
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <Home className="h-4 w-4 shrink-0" />
+              <Home className="text-red-500 h-4 w-4 shrink-0" />
               <span className="text-sm capitalize">
                 {propertyType.replaceAll("_", " ")}
               </span>
@@ -277,7 +280,7 @@ const HousePage = async ({ params }: HousePageProps) => {
           {/* Description */}
           {description && (
             <div>
-              <h2 className="text-sm font-semibold text-gray-700 mb-1">
+              <h2 className="text-sm font-semibold text-blue-400 mb-1">
                 About
               </h2>
               <p className="text-sm text-gray-600 leading-relaxed">
@@ -287,14 +290,12 @@ const HousePage = async ({ params }: HousePageProps) => {
           )}
 
           {/* Full details */}
-          {content && (
+          {/* {content && (
             <div>
-              <h2 className="text-sm font-semibold text-gray-700 mb-1">
-                Full details
-              </h2>
+              <h2 className="text-sm font-semibold  mb-1">Full details</h2>
               <p className="text-sm text-gray-600 leading-relaxed">{content}</p>
             </div>
-          )}
+          )} */}
 
           {/* Amenities */}
           {amenities?.length > 0 && (

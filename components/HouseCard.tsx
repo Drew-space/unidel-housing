@@ -33,18 +33,18 @@ const HouseCard = ({
       </div>
 
       {/* Details */}
-      <div className="p-2 sm:p-4">
+      <div className="p-2  sm:p-4">
         {/* room type + location row */}
         <div className="flex items-center gap-1 sm:gap-2 text-[11px] sm:text-sm text-gray-500 mb-1">
           <span className="flex items-center gap-0.5 truncate">
-            <BedDouble className="w-3 h-3 sm:w-4 sm:h-4 shrink-0" />
-            <span className="truncate capitalize">
+            <BedDouble className="  text-blue-500/95 w-3 h-3 sm:w-4 sm:h-4 shrink-0" />
+            <span className="truncate capitalize font-sans">
               {roomType.replaceAll("_", " ")}
             </span>
           </span>
           <span>·</span>
           <span className="flex items-center gap-0.5 truncate">
-            <MapPin className="w-3 h-3 sm:w-4 sm:h-4 shrink-0" />
+            <MapPin className=" text-green-600 w-3 h-3 sm:w-4 sm:h-4 shrink-0 " />
             <span className="truncate capitalize">
               {location.replaceAll("-", " ")}
             </span>
@@ -52,12 +52,12 @@ const HouseCard = ({
         </div>
 
         {/* Title */}
-        <h3 className="font-bold text-sm sm:text-base leading-snug line-clamp-1">
+        <h3 className=" font-mona text-sm sm:text-base leading-snug line-clamp-1">
           {title}
         </h3>
 
         {/* Price */}
-        <p className="font-bold text-sm sm:text-base mt-0.5">
+        <p className="font-bold text-slate-900/90 text-sm sm:text-base mt-0.5">
           ₦{price.toLocaleString()}
           <span className="text-gray-400 text-xs font-normal"> /yr</span>
         </p>
