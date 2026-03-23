@@ -185,6 +185,7 @@ const HousePage = async ({ params }: HousePageProps) => {
   }
 
   const {
+    _id,
     title,
     price,
     location,
@@ -314,7 +315,7 @@ const HousePage = async ({ params }: HousePageProps) => {
           )}
 
           {/* Contact */}
-          <div className="pt-4 border-t">
+          {/* <div className="pt-4 border-t">
             <h2 className="text-sm font-semibold text-gray-700 mb-3">
               Contact landlord
             </h2>
@@ -323,14 +324,25 @@ const HousePage = async ({ params }: HousePageProps) => {
                 📞 Call {contactPhone}
               </Button>
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
 
       {/* WhatsApp FAB */}
-      <div className="animate-bounce fixed bottom-4 right-6 rounded-full">
-        <img src="/whatsapp.svg" className="h-12 w-12 rounded-full" />
-      </div>
+      <a
+        href={`https://wa.me/${contactPhone.replace(/^0/, "234")}?text=${encodeURIComponent(
+          `Hi, my name is [Your Name] and I'm interested in this listing: ${title}\n\nhttps://dormix.vercel.app/house/${house._id}`,
+        )}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="animate-bounce fixed bottom-4 right-6 rounded-full shadow-lg"
+      >
+        <img
+          src="/whatsapp.svg"
+          alt="Chat on WhatsApp"
+          className="h-12 w-12 rounded-full"
+        />
+      </a>
     </div>
   );
 };
