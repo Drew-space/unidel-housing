@@ -11,7 +11,7 @@ type HouseCardProps = {
   amenities: string[];
   authorName: string;
   authorImage: string;
-  imageUrl: string;
+  imageUrl?: string;
 };
 
 const HouseCard = ({
