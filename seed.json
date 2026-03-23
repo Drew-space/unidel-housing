@@ -2,7 +2,7 @@
   {
     "title": "Cozy Bed Sitter in Owa-Alero",
     "description": "A well-furnished bed sitter perfect for a student. Close to the university gate.",
-
+    "imageUrl": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800",
     "images": [
       "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800",
       "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800",
@@ -10,6 +10,7 @@
       "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800",
       "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=800"
     ],
+    "authorUsername": "drew",
     "authorId": "j97chvr5y1760dn25btzvfemhn839m3c",
     "authorName": "Enudeme Chukwuka",
     "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zQkNtcVpDQVEzeTJadnNjNW5ScHgzMmJPSkcifQ",
@@ -19,13 +20,11 @@
     "roomType": "bed_sitter",
     "propertyType": "bungalow",
     "amenities": ["bed", "wardrobe", "curtains"],
-
     "updatedAt": 1774001233943
   },
   {
     "title": "Spacious Single Room in Alihame",
     "description": "A large single room in a fenced compound. Constant water supply and good security.",
-
     "imageUrl": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800",
     "images": [
       "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800",
@@ -34,6 +33,7 @@
       "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800",
       "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800"
     ],
+    "authorUsername": "drew",
     "authorId": "j97chvr5y1760dn25btzvfemhn839m3c",
     "authorName": "Enudeme Chukwuka",
     "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zQkNtcVpDQVEzeTJadnNjNW5ScHgzMmJPSkcifQ",
@@ -43,13 +43,11 @@
     "roomType": "single_room",
     "propertyType": "fenced_compound",
     "amenities": ["wardrobe", "cupboard", "kitchen_cabinet"],
-
     "updatedAt": 1774001233943
   },
   {
     "title": "Modern Room and Parlor in Owo-Yibo",
     "description": "A tastefully finished room and parlor apartment. Ideal for students who need more space.",
-
     "imageUrl": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
     "images": [
       "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
@@ -58,6 +56,7 @@
       "https://images.unsplash.com/photo-1630699144867-37acec97df5a?w=800",
       "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800"
     ],
+    "authorUsername": "drew",
     "authorId": "j97chvr5y1760dn25btzvfemhn839m3c",
     "authorName": "Enudeme Chukwuka",
     "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zQkNtcVpDQVEzeTJadnNjNW5ScHgzMmJPSkcifQ",
@@ -75,13 +74,11 @@
       "curtains",
       "kitchen_cabinet"
     ],
-
     "updatedAt": 1774001233943
   },
   {
     "title": "Affordable Bed Sitter in Alihame",
     "description": "Budget-friendly bed sitter for students. Clean and secure.",
-
     "imageUrl": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800",
     "images": [
       "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800",
@@ -90,6 +87,7 @@
       "https://images.unsplash.com/photo-1564078516393-cf04bd966897?w=800",
       "https://images.unsplash.com/photo-1532323544230-7191fd51bc1b?w=800"
     ],
+    "authorUsername": "drew",
     "authorId": "j97chvr5y1760dn25btzvfemhn839m3c",
     "authorName": "Enudeme Chukwuka",
     "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zQkNtcVpDQVEzeTJadnNjNW5ScHgzMmJPSkcifQ",
@@ -99,13 +97,11 @@
     "roomType": "bed_sitter",
     "propertyType": "bungalow",
     "amenities": ["bed", "cupboard", "curtains"],
-
     "updatedAt": 1774001233943
   },
   {
     "title": "Single Room in Owa-Alero Fenced Compound",
     "description": "Clean single room in a well secured fenced compound. Water and light available.",
-
     "imageUrl": "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800",
     "images": [
       "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800",
@@ -114,6 +110,7 @@
       "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=800",
       "https://images.unsplash.com/photo-1600210491892-03d54730d689?w=800"
     ],
+    "authorUsername": "drew",
     "authorId": "j97chvr5y1760dn25btzvfemhn839m3c",
     "authorName": "Enudeme Chukwuka",
     "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zQkNtcVpDQVEzeTJadnNjNW5ScHgzMmJPSkcifQ",
@@ -123,13 +120,11 @@
     "roomType": "single_room",
     "propertyType": "fenced_compound",
     "amenities": ["wardrobe", "kitchen_cabinet", "cupboard"],
-
     "updatedAt": 1774001233943
   },
   {
     "title": "Room and Parlor in Owa-Alero",
     "description": "Spacious room and parlor in a bungalow. Perfect for final year students.",
-
     "imageUrl": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800",
     "images": [
       "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800",
@@ -138,6 +133,7 @@
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
       "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=800"
     ],
+    "authorUsername": "drew",
     "authorId": "j97chvr5y1760dn25btzvfemhn839m3c",
     "authorName": "Enudeme Chukwuka",
     "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zQkNtcVpDQVEzeTJadnNjNW5ScHgzMmJPSkcifQ",
@@ -147,7 +143,6 @@
     "roomType": "room_and_parlor",
     "propertyType": "bungalow",
     "amenities": ["bed", "sofa", "dining_table", "wardrobe", "tv_stand"],
-
     "updatedAt": 1774001233943
   }
 ]

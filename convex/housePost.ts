@@ -72,6 +72,7 @@ export const createHousePost = mutation({
     await ctx.db.insert("housePost", {
       title: args.title,
       description: args.description,
+      authorUsername: user.username,
 
       price: args.price,
       contactPhone: args.contactPhone,

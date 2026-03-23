@@ -26,6 +26,8 @@ const HousePage = async ({ params }: HousePageProps) => {
     _id,
     title,
     price,
+    authorUsername,
+
     location,
     roomType,
     propertyType,
@@ -77,7 +79,9 @@ const HousePage = async ({ params }: HousePageProps) => {
             />
             <div>
               <p className="text-xs text-gray-400">Listed by</p>
-              <p className="text-sm font-medium text-gray-700">{authorName}</p>
+              <p className="text-sm font-medium text-gray-700">
+                {authorUsername}
+              </p>
             </div>
           </div>
 
