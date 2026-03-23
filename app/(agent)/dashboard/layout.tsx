@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
-import { TooltipProvider } from "@/components/ui/tooltip";
+
 import { cn } from "@/lib/utils";
-import Navbar from "@/components/Navbar";
+
 import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -44,10 +44,8 @@ export default function MainLayout({
         "h-full antialiased font-sans",
       )}
     >
-      <Navbar />
-      <TooltipProvider>
-        <main className="flex-1">{children}</main>
-      </TooltipProvider>
+      <main className="flex-1">{children}</main>
+
       <Toaster />
     </div>
   );

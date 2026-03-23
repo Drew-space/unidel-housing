@@ -21,7 +21,7 @@ export default function DashboardPage() {
           <h1 className="md:text-5xl text-3xl font-bold">
             Welcome back,
             <br />
-            <span>{user?.firstName ?? user?.username ?? "there"} 👋</span>
+            <span>{user?.firstName ?? user?.username ?? "there"}</span>
           </h1>
         </div>
         <Link href="/dashboard/create-listing" className={buttonVariants()}>
@@ -40,7 +40,7 @@ export default function DashboardPage() {
       {houses?.length === 0 && (
         <div className="mt-8">
           <p className="text-muted-foreground text-sm">
-            You haven&apos;t posted any listings yet.{" "}
+            You haven&apos;t posted any listings yet.
             <Link
               href="/dashboard/create-listing"
               className="underline text-foreground font-medium"
