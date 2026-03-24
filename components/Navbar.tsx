@@ -13,7 +13,8 @@ import {
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "./ui/sheet";
 
 const Navbar = () => {
-  const { user, isSignedIn } = useUser();
+  const { user, isLoaded, isSignedIn } = useUser();
+  if (!isLoaded) return null;
 
   // Get user role
   const role = user?.publicMetadata?.role || "user"; // default to normal user

@@ -1,0 +1,146 @@
+"use client";
+
+import React, { useState } from "react";
+import {
+  MapPin,
+  BedDouble,
+  Trash2,
+  Heart,
+  EllipsisVertical,
+} from "lucide-react";
+import { useUser } from "@clerk/nextjs";
+import { Id } from "@/convex/_generated/dataModel";
+import { toggleFavourite } from "@/convex/favourites";
+import { useMutation, useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import { Button } from "./ui/button";
+
+type HouseCardProps = {
+  _id: Id<"housePost">;
+  title: string;
+  price: number;
+  location: string;
+  roomType: string;
+  propertyType: string;
+  amenities: string[];
+  authorName: string;
+  authorImage: string;
+  authorId: Id<"users">;
+  imageUrl?: string;
+  onDelete?: (id: Id<"housePost">) => void;
+};
+
+const DashboardHouseCard = ({
+  _id,
+  title,
+  price,
+  location,
+  roomType,
+  imageUrl,
+  authorId,
+  onDelete,
+}: HouseCardProps) => {
+  const { user, isSignedIn } = useUser();
+
+  const liked =
+    useQuery(api.favourites.isFavourited, { houseId: _id }) ?? false;
+  const toggleFavourite = useMutation(api.favourites.toggleFavourite);
+
+  const role = user?.publicMetadata?.role;
+  const isAdmin = role === "agent";
+  const isAuthor = user?.id === authorId; // clerk userId vs convex authorId won't match directly — see note below
+
+  const canDelete = isSignedIn && (isAdmin || isAuthor);
+
+  return (
+    <div className="bg-white cursor-pointer">
+      <div className="relative lg:h-56 h-36 sm:h-48 overflow-hidden rounded-xl lg:rounded-2xl">
+        <img
+          src={imageUrl}
+          alt={title}
+          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+        />
+
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            if (!isSignedIn) return; // optionally show a toast
+            toggleFavourite({ houseId: _id });
+          }}
+          className="absolute top-2 right-2 ring ring-white/95 rounded-full p-1.5 transition-colors shadow"
+        >
+          <Heart
+            className={`w-3.5 h-3.5 transition-colors ${
+              liked ? "fill-red-500 text-red-500" : "text-white"
+            }`}
+          />
+        </button>
+      </div>
+
+      <div className="p-2 sm:p-4">
+        <div className="flex items-center gap-1 sm:gap-2 text-[11px] sm:text-sm text-gray-500 mb-1">
+          <span className="flex items-center gap-0.5 truncate">
+            <BedDouble className="text-blue-500/95 w-3 h-3 sm:w-4 sm:h-4 shrink-0" />
+            <span className="truncate capitalize font-sans">
+              {roomType.replaceAll("_", " ")}
+            </span>
+          </span>
+          <span>·</span>
+          <span className="flex items-center gap-0.5 truncate">
+            <MapPin className="text-green-600 w-3 h-3 sm:w-4 sm:h-4 shrink-0" />
+            <span className="truncate capitalize">
+              {location.replaceAll("-", " ")}
+            </span>
+          </span>
+        </div>
+
+        <h3 className="font-mona text-sm sm:text-base leading-snug line-clamp-1">
+          {title}
+        </h3>
+        <div className="flex justify-between items-center">
+          <p className="font-bold text-slate-900/90 text-sm sm:text-base mt-0.5">
+            ₦{price.toLocaleString()}
+            <span className="text-gray-400 text-xs font-normal"> /yr</span>
+          </p>
+
+          {canDelete && (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className="flex size-8 text-muted-foreground data-[state=open]:bg-muted"
+                  size="icon"
+                >
+                  <EllipsisVertical />
+                  <span className="sr-only">Open menu</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-32">
+                <DropdownMenuItem
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onDelete?.(_id);
+                  }}
+                  className="flex items-center"
+                  variant="destructive"
+                >
+                  <Trash2 className="w-3.5 h-3.5" />
+                  Delete
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default DashboardHouseCard;

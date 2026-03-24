@@ -65,7 +65,7 @@ export default function DashboardPage() {
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 mt-8 gap-4">
           {houses.map((house) => (
             <Link href={`/house/${house._id}`} key={house._id}>
-              <HouseCard {...house} />
+              <HouseCard showActions {...house} />
             </Link>
           ))}
         </div>

@@ -214,6 +214,7 @@ type HouseCardProps = {
   authorImage: string;
   authorId: Id<"users">;
   imageUrl?: string;
+  showActions?: boolean;
   onDelete?: (id: Id<"housePost">) => void;
 };
 
@@ -226,6 +227,7 @@ const HouseCard = ({
   imageUrl,
   authorId,
   onDelete,
+  showActions,
 }: HouseCardProps) => {
   const { user, isSignedIn } = useUser();
 
@@ -290,7 +292,7 @@ const HouseCard = ({
             <span className="text-gray-400 text-xs font-normal"> /yr</span>
           </p>
 
-          {canDelete && (
+          {showActions && canDelete && (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
