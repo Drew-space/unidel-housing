@@ -169,6 +169,33 @@ export const getMyHouses = query({
   },
 });
 
+export const deleteHouse = mutation({
+  args: { id: v.id("housePost") },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error("Not authenticated");
+
+    const user = await ctx.db
+      .query("users")
+      .withIndex("by_clerkId", (q) => q.eq("clerkId", identity.subject))
+      .unique();
+    if (!user) throw new Error("User not found");
+
+    const house = await ctx.db.get(args.id);
+    if (!house) throw new Error("House not found");
+
+    // only the author can delete
+    if (house.authorId !== user._id) throw new Error("Not authorized");
+
+    // delete the cover image from storage
+    if (house.imageStorageId) {
+      await ctx.storage.delete(house.imageStorageId);
+    }
+
+    await ctx.db.delete(args.id);
+  },
+});
+
 // ```
 
 // On the frontend it would just be two dropdowns:
