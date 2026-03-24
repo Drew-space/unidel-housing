@@ -28,8 +28,15 @@ import {
   LucideTrash2,
 } from "lucide-react";
 
-type Location = "owa-alero" | "alihame" | "owo-yibo";
-type RoomType = "bed_sitter" | "single_room" | "room_and_parlor";
+type Location =
+  | "Alihame"
+  | "Aliokpu"
+  | "Agbor-Obi"
+  | "Boji-Boji"
+  | "Owa-Alero"
+  | "Owo-Oyibu"
+  | "Owa-Ekei";
+type RoomType = "Bed-Sitter" | "Single-Room" | "Room_and_Parlor";
 
 const LOCATIONS = [
   {
@@ -37,9 +44,21 @@ const LOCATIONS = [
     label: "All Locations",
     items: [
       { value: "", label: "All Locations" },
-      { value: "owa-alero", label: "Owa-Alero" },
-      { value: "alihame", label: "Alihame" },
-      { value: "owo-yibo", label: "Owo-Yibo" },
+      { value: "Alihame", label: "Alihame" },
+      { value: "Agbor-Obi", label: "Agbor-Obi" },
+      { value: "Aliokpu", label: "Aliokpu" },
+      { value: "Boji-Boji", label: "Boji-Boji" },
+      { value: "Owa-Alero", label: "Owa-Alero" },
+      { value: "Owo-Oyibu", label: "Owo-Oyibu" },
+      { value: "Owa-Ekei", label: "Owa-Ekei" },
+
+      // v.literal("Alihame"),
+      // v.literal("Owa-Alero"),
+      // v.literal("Owo-Oyibu"),
+      // v.literal("Owa-Ekei"),
+      // v.literal("Agbor-Obi"),
+      // v.literal("Boji-Boji"),
+      // v.literal("Aliokpu"),
     ],
   },
 ] as const;
@@ -50,9 +69,9 @@ const ROOM_TYPES = [
     label: "All Rooms",
     items: [
       { value: "", label: "All Rooms" },
-      { value: "bed_sitter", label: "Bed Sitter" },
-      { value: "single_room", label: "Single Room" },
-      { value: "room_and_parlor", label: "Room & Parlor" },
+      { value: "Bed-Sitter", label: "Bed Sitter" },
+      { value: "Single-Room", label: "Single Room" },
+      { value: "Room_and_Parlor", label: "Room & Parlor" },
     ],
   },
 ] as const;

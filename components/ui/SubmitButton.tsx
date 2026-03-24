@@ -9,19 +9,19 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Id } from "@/convex/_generated/dataModel";
 
-type Amenity =
-  | "bed"
-  | "wardrobe"
-  | "cupboard"
-  | "kitchen_cabinet"
-  | "sofa"
-  | "dining_table"
-  | "tv_stand"
-  | "curtains";
+type Amenity = "Bed" | "Wardrobe" | "Cupboard" | "Kitchen-Cabinet" | "Sofa";
 
-type Location = "owa-alero" | "alihame" | "owo-yibo";
-type RoomType = "bed_sitter" | "single_room" | "room_and_parlor";
-type PropertyType = "fenced_compound" | "bungalow" | "story_building";
+type Location =
+  | "Alihame"
+  | "Aliokpu"
+  | "Agbor-Obi"
+  | "Boji-Boji"
+  | "Owa-Alero"
+  | "Owo-Oyibu"
+  | "Owa-Ekei";
+
+type RoomType = "Bed-Sitter" | "Single-Room" | "Room_and_Parlor";
+type PropertyType = "Bungalow" | "Story-Building";
 
 interface HouseSubmitButtonProps {
   files: File[];
@@ -57,7 +57,7 @@ export function HouseSubmitButton({ files, onReset }: HouseSubmitButtonProps) {
 
         const title = (formData.get("title") as string)?.trim();
         const description = (formData.get("description") as string)?.trim();
-        // const content = (formData.get("content") as string)?.trim();
+
         const price = Number(formData.get("price"));
         const contactPhone = (formData.get("contactPhone") as string)?.trim();
         const location = (

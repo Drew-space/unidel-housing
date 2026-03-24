@@ -26,20 +26,24 @@ import { X, ImagePlus } from "lucide-react";
 import { HouseSubmitButton } from "@/components/ui/SubmitButton";
 
 const AMENITIES = [
-  { value: "bed", label: "Bed" },
-  { value: "wardrobe", label: "Wardrobe" },
-  { value: "cupboard", label: "Cupboard" },
-  { value: "kitchen_cabinet", label: "Kitchen cabinet" },
-  { value: "sofa", label: "Sofa" },
-  { value: "dining_table", label: "Dining table" },
-  { value: "tv_stand", label: "TV stand" },
-  { value: "curtains", label: "Curtains" },
+  { value: "Bed", label: "Bed" },
+  { value: "Wardrobe", label: "Wardrobe" },
+  { value: "Cupboard", label: "Cupboard" },
+  { value: "Kitchen-Cabinet", label: "Kitchen-Cabinet" },
+  { value: "Sofa", label: "Sofa" },
 ] as const;
 
 type Amenity = (typeof AMENITIES)[number]["value"];
-type Location = "owa-alero" | "alihame" | "owo-yibo";
-type RoomType = "bed_sitter" | "single_room" | "room_and_parlor";
-type PropertyType = "fenced_compound" | "bungalow" | "story_building";
+type Location =
+  | "Alihame"
+  | "Aliokpu"
+  | "Agbor-Obi"
+  | "Boji-Boji"
+  | "Owa-Alero"
+  | "Owo-Oyibu"
+  | "Owa-Ekei";
+type RoomType = "Bed-Sitter" | "Single-Room" | "Room_and_Parlor";
+type PropertyType = "Bungalow" | "Story-Building";
 
 type HouseFormValues = {
   title: string;
@@ -224,9 +228,13 @@ export default function CreateListingPage() {
                           <SelectValue placeholder="Select location" />
                         </SelectTrigger>
                         <SelectContent className="font-sans">
-                          <SelectItem value="owa-alero">Owa-Alero</SelectItem>
-                          <SelectItem value="alihame">Alihame</SelectItem>
-                          <SelectItem value="owo-yibo">Owo-Yibo</SelectItem>
+                          <SelectItem value="Alihame">Alihame</SelectItem>
+                          <SelectItem value="Aliokpu">Aliokpu</SelectItem>
+                          <SelectItem value="Agbor-Obi">Agbor-Obi</SelectItem>
+                          <SelectItem value="Boji-Boji">Boji-Boji</SelectItem>
+                          <SelectItem value="Owa-Alero">Owa-Alero</SelectItem>
+                          <SelectItem value="Owo-Oyibu">Owo-Oyibu</SelectItem>
+                          <SelectItem value="Owa-Ekei">Owa-Ekei</SelectItem>
                         </SelectContent>
                       </Select>
                     )}
@@ -253,12 +261,12 @@ export default function CreateListingPage() {
                           <SelectValue placeholder="Select room type" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="bed_sitter">Bed sitter</SelectItem>
-                          <SelectItem value="single_room">
-                            Single room
+                          <SelectItem value="Bed-Sitter">Bed Sitter</SelectItem>
+                          <SelectItem value="Single-Room">
+                            Single Room
                           </SelectItem>
-                          <SelectItem value="room_and_parlor">
-                            Room & parlor
+                          <SelectItem value="Room_and_Parlor">
+                            Room & Parlor
                           </SelectItem>
                         </SelectContent>
                       </Select>
@@ -286,12 +294,9 @@ export default function CreateListingPage() {
                           <SelectValue placeholder="Select property type" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="fenced_compound">
-                            Fenced compound
-                          </SelectItem>
-                          <SelectItem value="bungalow">Bungalow</SelectItem>
-                          <SelectItem value="story_building">
-                            Story building
+                          <SelectItem value="Bungalow">Bungalow</SelectItem>
+                          <SelectItem value="Story-Building">
+                            Story Building
                           </SelectItem>
                         </SelectContent>
                       </Select>

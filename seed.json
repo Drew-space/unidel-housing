@@ -16,10 +16,10 @@
     "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zQkNtcVpDQVEzeTJadnNjNW5ScHgzMmJPSkcifQ",
     "price": 80000,
     "contactPhone": "08012345678",
-    "location": "owa-alero",
-    "roomType": "bed_sitter",
-    "propertyType": "bungalow",
-    "amenities": ["bed", "wardrobe", "curtains"],
+    "location": "Owa-Alero",
+    "roomType": "Bed-Sitter",
+    "propertyType": "Bungalow",
+    "amenities": ["Bed", "Wardrobe"],
     "updatedAt": 1774001233943
   },
   {
@@ -39,15 +39,15 @@
     "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zQkNtcVpDQVEzeTJadnNjNW5ScHgzMmJPSkcifQ",
     "price": 60000,
     "contactPhone": "08023456789",
-    "location": "alihame",
-    "roomType": "single_room",
-    "propertyType": "fenced_compound",
-    "amenities": ["wardrobe", "cupboard", "kitchen_cabinet"],
+    "location": "Alihame",
+    "roomType": "Single-Room",
+    "propertyType": "Bungalow",
+    "amenities": ["Wardrobe", "Cupboard", "Kitchen-Cabinet"],
     "updatedAt": 1774001233943
   },
   {
     "title": "Modern Room and Parlor in Owo-Yibo",
-    "description": "A tastefully finished room and parlor apartment. Ideal for students who need more space.",
+    "description": "A tastefully finished room and parlor apartment.",
     "imageUrl": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
     "images": [
       "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
@@ -62,30 +62,18 @@
     "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zQkNtcVpDQVEzeTJadnNjNW5ScHgzMmJPSkcifQ",
     "price": 120000,
     "contactPhone": "08034567890",
-    "location": "owo-yibo",
-    "roomType": "room_and_parlor",
-    "propertyType": "story_building",
-    "amenities": [
-      "bed",
-      "wardrobe",
-      "sofa",
-      "dining_table",
-      "tv_stand",
-      "curtains",
-      "kitchen_cabinet"
-    ],
+    "location": "Owo-Oyibu",
+    "roomType": "Room_and_Parlor",
+    "propertyType": "Story-Building",
+    "amenities": ["Bed", "Wardrobe", "Sofa", "Kitchen-Cabinet"],
     "updatedAt": 1774001233943
   },
   {
     "title": "Affordable Bed Sitter in Alihame",
-    "description": "Budget-friendly bed sitter for students. Clean and secure.",
+    "description": "Budget-friendly bed sitter for students.",
     "imageUrl": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800",
     "images": [
-      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800",
-      "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=800",
-      "https://images.unsplash.com/photo-1525438160292-a4a860951216?w=800",
-      "https://images.unsplash.com/photo-1564078516393-cf04bd966897?w=800",
-      "https://images.unsplash.com/photo-1532323544230-7191fd51bc1b?w=800"
+      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800"
     ],
     "authorUsername": "drew",
     "authorId": "j97chvr5y1760dn25btzvfemhn839m3c",
@@ -93,22 +81,18 @@
     "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zQkNtcVpDQVEzeTJadnNjNW5ScHgzMmJPSkcifQ",
     "price": 50000,
     "contactPhone": "08045678901",
-    "location": "alihame",
-    "roomType": "bed_sitter",
-    "propertyType": "bungalow",
-    "amenities": ["bed", "cupboard", "curtains"],
+    "location": "Alihame",
+    "roomType": "Bed-Sitter",
+    "propertyType": "Bungalow",
+    "amenities": ["Bed", "Cupboard"],
     "updatedAt": 1774001233943
   },
   {
     "title": "Single Room in Owa-Alero Fenced Compound",
-    "description": "Clean single room in a well secured fenced compound. Water and light available.",
+    "description": "Clean single room in a secured compound.",
     "imageUrl": "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800",
     "images": [
-      "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800",
-      "https://images.unsplash.com/photo-1560185008-b033106af5c3?w=800",
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800",
-      "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=800",
-      "https://images.unsplash.com/photo-1600210491892-03d54730d689?w=800"
+      "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800"
     ],
     "authorUsername": "drew",
     "authorId": "j97chvr5y1760dn25btzvfemhn839m3c",
@@ -116,22 +100,18 @@
     "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zQkNtcVpDQVEzeTJadnNjNW5ScHgzMmJPSkcifQ",
     "price": 70000,
     "contactPhone": "08056789012",
-    "location": "owa-alero",
-    "roomType": "single_room",
-    "propertyType": "fenced_compound",
-    "amenities": ["wardrobe", "kitchen_cabinet", "cupboard"],
+    "location": "Owa-Alero",
+    "roomType": "Single-Room",
+    "propertyType": "Bungalow",
+    "amenities": ["Wardrobe", "Kitchen-Cabinet", "Cupboard"],
     "updatedAt": 1774001233943
   },
   {
     "title": "Room and Parlor in Owa-Alero",
-    "description": "Spacious room and parlor in a bungalow. Perfect for final year students.",
+    "description": "Spacious room and parlor in a bungalow.",
     "imageUrl": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800",
     "images": [
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800",
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800",
-      "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
-      "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=800"
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800"
     ],
     "authorUsername": "drew",
     "authorId": "j97chvr5y1760dn25btzvfemhn839m3c",
@@ -139,10 +119,10 @@
     "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zQkNtcVpDQVEzeTJadnNjNW5ScHgzMmJPSkcifQ",
     "price": 100000,
     "contactPhone": "08067890123",
-    "location": "owa-alero",
-    "roomType": "room_and_parlor",
-    "propertyType": "bungalow",
-    "amenities": ["bed", "sofa", "dining_table", "wardrobe", "tv_stand"],
+    "location": "Owa-Alero",
+    "roomType": "Room_and_Parlor",
+    "propertyType": "Bungalow",
+    "amenities": ["Bed", "Sofa", "Wardrobe"],
     "updatedAt": 1774001233943
   }
 ]

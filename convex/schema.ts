@@ -28,33 +28,30 @@ export default defineSchema({
     contactPhone: v.string(),
 
     location: v.union(
-      v.literal("owa-alero"),
-      v.literal("alihame"),
-      v.literal("owo-yibo"),
+      v.literal("Alihame"),
+      v.literal("Owa-Alero"),
+      v.literal("Owo-Oyibu"),
+      v.literal("Owa-Ekei"),
+      v.literal("Agbor-Obi"),
+      v.literal("Boji-Boji"),
+      v.literal("Aliokpu"),
     ),
 
     roomType: v.union(
-      v.literal("bed_sitter"),
-      v.literal("single_room"),
-      v.literal("room_and_parlor"),
+      v.literal("Bed-Sitter"),
+      v.literal("Single-Room"),
+      v.literal("Room_and_Parlor"),
     ),
 
-    propertyType: v.union(
-      v.literal("fenced_compound"),
-      v.literal("bungalow"),
-      v.literal("story_building"),
-    ),
+    propertyType: v.union(v.literal("Bungalow"), v.literal("Story-Building")),
 
     amenities: v.array(
       v.union(
-        v.literal("bed"),
-        v.literal("wardrobe"),
-        v.literal("cupboard"),
-        v.literal("kitchen_cabinet"),
-        v.literal("sofa"),
-        v.literal("dining_table"),
-        v.literal("tv_stand"),
-        v.literal("curtains"),
+        v.literal("Bed"),
+        v.literal("Wardrobe"),
+        v.literal("Cupboard"),
+        v.literal("Kitchen-Cabinet"),
+        v.literal("Sofa"),
       ),
     ),
 
@@ -74,3 +71,5 @@ export default defineSchema({
 });
 
 // schema.ts
+// bunx convex import --table housePost seed.json
+// bunx convex import --table housePost seed.json --replace
