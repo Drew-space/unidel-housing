@@ -33,7 +33,7 @@ export default function MainLayout({
     <div className={cn("h-full antialiased font-sans")}>
       <Navbar />
       <TooltipProvider>
-        <main className="flex-1  mt-4  ">{children}</main>
+        <main className="flex-1  pt-16 ">{children}</main>
       </TooltipProvider>
     </div>
   );

@@ -45,7 +45,7 @@ export default function RootLayout({
     >
       <body>
         <ConvexClientProvider>
-          <main className="pt-16">{children}</main>
+          <main className="">{children}</main>
           <Toaster />
         </ConvexClientProvider>
       </body>
