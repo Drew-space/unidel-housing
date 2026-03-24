@@ -1,6 +1,6 @@
 "use client";
 import { useQuery } from "convex/react";
-import { useUser } from "@clerk/nextjs";
+import { UserAvatar, useUser } from "@clerk/nextjs";
 import { api } from "@/convex/_generated/api";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
@@ -14,18 +14,29 @@ export default function DashboardPage() {
   return (
     <section className="mx-auto container max-sm:px-4">
       {/* Header */}
-      <div className="mt-10 flex items-start justify-between">
-        <div>
-          <p className="text-amber-950/90">Your Listings</p>
-          <h1 className="md:text-5xl text-3xl font-bold">
-            Welcome back,
-            <br />
-            <span>{user?.username ?? user?.firstName ?? "there"}</span>
-          </h1>
+      <div>
+        <div className=" flex items-center justify-between">
+          <img
+            src={user?.imageUrl || "/default-avatar.png"}
+            alt={user?.username ?? user?.firstName ?? "User"}
+            className="w-12 h-12 rounded-full object-cover"
+          />
         </div>
-        <Link href="/dashboard/create-listing" className={buttonVariants()}>
-          + Add listing
-        </Link>
+        <div className="flex justify-between  items-center">
+          <div className="flex items-center">
+            <h1 className="text-2xl font-bold font-mona">
+              Hey {user?.username ?? user?.firstName ?? "there"}{" "}
+            </h1>
+            <span className=" text-[10px] mt-2 bg-purple-400 text-white  rounded-sm px-2">
+              Agent
+            </span>
+          </div>
+          <div>
+            <Link href="/dashboard/create-listing" className={buttonVariants()}>
+              + Add listing
+            </Link>
+          </div>
+        </div>
       </div>
 
       {/* Loading */}
