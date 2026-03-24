@@ -245,11 +245,11 @@ const HouseCard = ({
             e.preventDefault();
             setLiked((prev) => !prev);
           }}
-          className="absolute top-2 right-2 bg-white/80 hover:bg-white rounded-full p-1.5 transition-colors shadow"
+          className="absolute top-2 right-2 ring ring-white/95 rounded-full p-1.5 transition-colors shadow"
         >
           <Heart
             className={`w-3.5 h-3.5 transition-colors ${
-              liked ? "fill-red-500 text-red-500" : "text-gray-400"
+              liked ? "fill-red-500 text-red-500" : "text-white"
             }`}
           />
         </button>
