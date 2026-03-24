@@ -184,6 +184,9 @@ import React, { useState } from "react";
 import { MapPin, BedDouble, Trash2, Heart } from "lucide-react";
 import { useUser } from "@clerk/nextjs";
 import { Id } from "@/convex/_generated/dataModel";
+import { toggleFavourite } from "@/convex/favourites";
+import { useMutation, useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 type HouseCardProps = {
   _id: Id<"housePost">;
@@ -211,7 +214,10 @@ const HouseCard = ({
   onDelete,
 }: HouseCardProps) => {
   const { user, isSignedIn } = useUser();
-  const [liked, setLiked] = useState(false);
+
+  const liked =
+    useQuery(api.favourites.isFavourited, { houseId: _id }) ?? false;
+  const toggleFavourite = useMutation(api.favourites.toggleFavourite);
 
   const role = user?.publicMetadata?.role;
   const isAdmin = role === "agent";
@@ -243,7 +249,8 @@ const HouseCard = ({
         <button
           onClick={(e) => {
             e.preventDefault();
-            setLiked((prev) => !prev);
+            if (!isSignedIn) return; // optionally show a toast
+            toggleFavourite({ houseId: _id });
           }}
           className="absolute top-2 right-2 ring ring-white/95 rounded-full p-1.5 transition-colors shadow"
         >

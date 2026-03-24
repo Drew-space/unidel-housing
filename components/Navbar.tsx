@@ -132,6 +132,7 @@ const Navbar = () => {
       name: isAgentOrAdmin ? "Dashboard" : "Become an Agent",
       hrefs: isAgentOrAdmin ? "/dashboard" : "/become-agent",
     },
+    { name: "Saved", hrefs: "/favourites" },
   ];
 
   return (

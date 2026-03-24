@@ -64,4 +64,13 @@ export default defineSchema({
     .index("by_location", ["location"])
     .index("by_roomType", ["roomType"])
     .index("by_location_and_roomType", ["location", "roomType"]), // combined filter
+
+  favourites: defineTable({
+    userId: v.string(), // clerk user id
+    houseId: v.id("housePost"),
+  })
+    .index("by_user", ["userId"])
+    .index("by_user_and_house", ["userId", "houseId"]),
 });
+
+// schema.ts
