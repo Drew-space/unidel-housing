@@ -157,28 +157,6 @@ export default function CreateListingPage() {
                 )}
               </div>
 
-              {/* Content */}
-              {/* <div className="flex flex-col gap-2">
-                <Label htmlFor="content">Full details</Label>
-                <Textarea
-                  id="content"
-                  placeholder="Describe the property in detail — location landmarks, security, utilities..."
-                  className="min-h-28 max-h-48 overflow-y-auto resize-none"
-                  {...register("content", {
-                    required: "Full details are required",
-                    minLength: {
-                      value: 20,
-                      message: "Full details must be at least 20 characters",
-                    },
-                  })}
-                />
-                {errors.content && (
-                  <p className="text-sm text-destructive">
-                    {errors.content.message}
-                  </p>
-                )}
-              </div> */}
-
               {/* Price & Phone */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-2">
