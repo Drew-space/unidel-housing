@@ -245,7 +245,7 @@ export default function CreateListingPage() {
                         <SelectTrigger>
                           <SelectValue placeholder="Select location" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="font-sans">
                           <SelectItem value="owa-alero">Owa-Alero</SelectItem>
                           <SelectItem value="alihame">Alihame</SelectItem>
                           <SelectItem value="owo-yibo">Owo-Yibo</SelectItem>

@@ -17,11 +17,7 @@ const inter = Inter({
 });
 
 // in your html tag:
-<html
-  lang="en"
-  className={`${mona_sans.variable} ${inter.variable}`}
-  suppressHydrationWarning
-></html>;
+
 export const metadata: Metadata = {
   title: "Ruum – Student Housing Made Easy",
   description:
@@ -41,8 +37,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={` ${mona_sans.variable} ${inter.variable}`}>
+    <html
+      lang="en"
+      className={` ${mona_sans.variable} ${inter.variable}`}
+      suppressHydrationWarning
+    >
+      <body>
         <ConvexClientProvider>
           {children}
           <Toaster />

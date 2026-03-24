@@ -5,18 +5,6 @@ import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "sonner";
 
-const mona_sans = Mona_Sans({
-  subsets: ["latin"],
-  variable: "--font-mona", // unique name
-  weight: ["400", "700"],
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter", // unique name
-  weight: ["400", "700"],
-});
-
 export const metadata: Metadata = {
   title: "Ruum – Student Housing Made Easy",
   description: "Find verified hostels and apartments near campus...",
@@ -42,16 +30,10 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div
-      className={cn(
-        inter.variable,
-        mona_sans.variable,
-        "h-full antialiased font-sans",
-      )}
-    >
+    <div className={cn("h-full antialiased font-sans")}>
       <Navbar />
       <TooltipProvider>
-        <main className="flex-1">{children}</main>
+        <main className="flex-1   ">{children}</main>
       </TooltipProvider>
     </div>
   );

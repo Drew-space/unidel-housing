@@ -52,7 +52,7 @@ const Navbar = () => {
           </SignOutButton>
 
           <Sheet>
-            <SheetTrigger asChild className="md:hidden">
+            <SheetTrigger asChild className="md:hidden ">
               <Menu />
             </SheetTrigger>
             <SheetContent className="w-84">
