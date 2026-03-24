@@ -3,9 +3,10 @@ import { useQuery } from "convex/react";
 import { UserAvatar, useUser } from "@clerk/nextjs";
 import { api } from "@/convex/_generated/api";
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import HouseCard from "@/components/HouseCard";
 import { ImageOff } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 export default function DashboardPage() {
   const { user } = useUser();
@@ -22,18 +23,16 @@ export default function DashboardPage() {
             className="w-12 h-12 rounded-full object-cover"
           />
         </div>
-        <div className="flex justify-between  items-center">
+        <div className="flex justify-between mt-4  items-center">
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold font-mona">
+            <h1 className="md:text-5xl relative font-bold font-mona">
               Hey {user?.username ?? user?.firstName ?? "there"}{" "}
+              <Badge className="bg-[#4ba2e9] ring ring-pink-50">Agent</Badge>
             </h1>
-            <span className=" text-[10px] mt-2 bg-purple-400 text-white  rounded-sm px-2">
-              Agent
-            </span>
           </div>
           <div>
-            <Link href="/dashboard/create-listing" className={buttonVariants()}>
-              + Add listing
+            <Link href="/dashboard/create-listing">
+              <Button variant={"outline"}>+ Add listing</Button>
             </Link>
           </div>
         </div>

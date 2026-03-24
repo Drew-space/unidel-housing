@@ -31,6 +31,7 @@ import {
   FileIcon,
   CommandIcon,
   CirclePlusIcon,
+  HouseIcon,
 } from "lucide-react";
 import { UserButton, useUser } from "@clerk/nextjs";
 
@@ -52,6 +53,12 @@ const data = {
       url: "#",
       icon: <CirclePlusIcon />,
       href: "/dashboard/create-listing",
+    },
+    {
+      title: "Home",
+      url: "#",
+      icon: <HouseIcon />,
+      href: "/",
     },
   ],
 };
