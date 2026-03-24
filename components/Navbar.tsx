@@ -82,7 +82,7 @@ bg-white/10 backdrop-blur-md border-b border-white/20"
                     <Link
                       key={links.name}
                       href={links.hrefs}
-                      className="link-primary hover:text-accent-2"
+                      className="link-primary text-md hover:text-accent-2"
                     >
                       {links.name}
                     </Link>
