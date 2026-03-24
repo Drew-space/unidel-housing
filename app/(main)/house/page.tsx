@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { api } from "@/convex/_generated/api";
-import { useQuery } from "convex/react";
+import { useMutation, useQuery } from "convex/react";
 import { Button } from "@/components/ui/button";
 import {
   Combobox,
@@ -63,6 +63,7 @@ const Hero = () => {
   const [clearKey, setClearKey] = useState(0);
 
   const houses = useQuery(api.housePost.getHouses, { location, roomType });
+  const deleteHouse = useMutation(api.housePost.deleteHouse);
 
   return (
     <section className=" mx-auto container max-sm:px-4">
@@ -161,7 +162,12 @@ const Hero = () => {
       <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 mt-8 gap-4">
         {houses?.map((house) => (
           <Link href={`/house/${house._id}`} key={house._id}>
-            <HouseCard {...house} />
+            <HouseCard
+              {...house}
+              onDelete={async (id) => {
+                await deleteHouse({ id });
+              }}
+            />
           </Link>
         ))}
       </div>

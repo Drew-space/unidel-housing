@@ -181,12 +181,26 @@
 "use client";
 
 import React, { useState } from "react";
-import { MapPin, BedDouble, Trash2, Heart } from "lucide-react";
+import {
+  MapPin,
+  BedDouble,
+  Trash2,
+  Heart,
+  EllipsisVertical,
+} from "lucide-react";
 import { useUser } from "@clerk/nextjs";
 import { Id } from "@/convex/_generated/dataModel";
 import { toggleFavourite } from "@/convex/favourites";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import { Button } from "./ui/button";
 
 type HouseCardProps = {
   _id: Id<"housePost">;
@@ -234,18 +248,6 @@ const HouseCard = ({
           className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
         />
 
-        {canDelete && (
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              onDelete?.(_id);
-            }}
-            className="absolute top-2 left-2 bg-white/80 hover:bg-red-500 hover:text-white text-red-500 rounded-full p-1.5 transition-colors shadow"
-          >
-            <Trash2 className="w-3.5 h-3.5" />
-          </button>
-        )}
-
         <button
           onClick={(e) => {
             e.preventDefault();
@@ -282,11 +284,40 @@ const HouseCard = ({
         <h3 className="font-mona text-sm sm:text-base leading-snug line-clamp-1">
           {title}
         </h3>
+        <div className="flex justify-between items-center">
+          <p className="font-bold text-slate-900/90 text-sm sm:text-base mt-0.5">
+            ₦{price.toLocaleString()}
+            <span className="text-gray-400 text-xs font-normal"> /yr</span>
+          </p>
 
-        <p className="font-bold text-slate-900/90 text-sm sm:text-base mt-0.5">
-          ₦{price.toLocaleString()}
-          <span className="text-gray-400 text-xs font-normal"> /yr</span>
-        </p>
+          {canDelete && (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className="flex size-8 text-muted-foreground data-[state=open]:bg-muted"
+                  size="icon"
+                >
+                  <EllipsisVertical />
+                  <span className="sr-only">Open menu</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-32">
+                <DropdownMenuItem
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onDelete?.(_id);
+                  }}
+                  className="flex items-center"
+                  variant="destructive"
+                >
+                  <Trash2 className="w-3.5 h-3.5" />
+                  Delete
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
+        </div>
       </div>
     </div>
   );
