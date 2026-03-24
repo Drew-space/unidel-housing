@@ -3,6 +3,7 @@ import "./globals.css";
 import { Metadata } from "next";
 import { Mona_Sans, Inter } from "next/font/google";
 import { Toaster } from "sonner";
+import Navbar from "@/components/Navbar";
 
 const mona_sans = Mona_Sans({
   subsets: ["latin"],
