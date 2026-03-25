@@ -5,7 +5,7 @@ import { api } from "@/convex/_generated/api";
 import Link from "next/link";
 import { Button, buttonVariants } from "@/components/ui/button";
 import HouseCard from "@/components/HouseCard";
-import { ImageOff } from "lucide-react";
+import { BadgeCheck, ImageOff } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 export default function DashboardPage() {
@@ -16,12 +16,13 @@ export default function DashboardPage() {
     <section className="mx-auto container max-sm:px-4">
       {/* Header */}
       <div>
-        <div className=" flex items-center justify-between">
+        <div className="flex items-center   justify-between">
           <img
             src={user?.imageUrl || "/default-avatar.png"}
             alt={user?.username ?? user?.firstName ?? "User"}
-            className="w-12 h-12 rounded-full object-cover"
+            className=" relative   w-12 h-12 rounded-full object-cover"
           />
+          <BadgeCheck className="text-green-400 absolute z-10 right-2 -bottom-2" />
         </div>
         <div className="flex justify-between mt-4  items-center">
           <div className="flex items-center">

@@ -52,14 +52,6 @@ const LOCATIONS = [
       { value: "Owa-Alero", label: "Owa-Alero" },
       { value: "Owo-Oyibu", label: "Owo-Oyibu" },
       { value: "Owa-Ekei", label: "Owa-Ekei" },
-
-      // v.literal("Alihame"),
-      // v.literal("Owa-Alero"),
-      // v.literal("Owo-Oyibu"),
-      // v.literal("Owa-Ekei"),
-      // v.literal("Agbor-Obi"),
-      // v.literal("Boji-Boji"),
-      // v.literal("Aliokpu"),
     ],
   },
 ] as const;
