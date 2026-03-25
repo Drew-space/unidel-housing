@@ -2,7 +2,12 @@
 
 import React, { useState } from "react";
 import { api } from "@/convex/_generated/api";
-import { useMutation, useQuery } from "convex/react";
+import {
+  useMutation,
+  usePaginatedQuery,
+  usePaginatedQuery_experimental,
+  useQuery,
+} from "convex/react";
 import { Button } from "@/components/ui/button";
 import {
   Combobox,
@@ -28,6 +33,14 @@ import {
   LucideTrash2,
 } from "lucide-react";
 import HouseCardSkeleton from "@/components/Skeleton";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 type Location =
   | "Alihame"
@@ -73,10 +86,34 @@ const Hero = () => {
   const [location, setLocation] = useState<Location | undefined>();
   const [roomType, setRoomType] = useState<RoomType | undefined>();
   const [clearKey, setClearKey] = useState(0);
+  const [page, setPage] = useState(1);
 
-  const houses = useQuery(api.housePost.getHouses, { location, roomType });
+  // const houses = usePaginatedQuery(api.housePost.getHouses, {
+  //   location,
+  //   roomType,
+  // });
   const deleteHouse = useMutation(api.housePost.deleteHouse);
 
+  const PAGE_SIZE = 6;
+
+  const { results, status, loadMore } = usePaginatedQuery(
+    api.housePost.getHouses,
+    { location, roomType },
+    { initialNumItems: PAGE_SIZE },
+  );
+
+  const handleNext = () => {
+    if (status === "CanLoadMore") {
+      loadMore(PAGE_SIZE);
+      setPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    // Convex can't go backward 😅
+    // So best UX = reset and reload pages up to target
+    setPage((prev) => Math.max(1, prev - 1));
+  };
   return (
     <section className=" mx-auto container max-sm:px-4">
       <div className="mt-10">
@@ -171,7 +208,7 @@ const Hero = () => {
         </Button>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 mt-8 gap-4">
+      {/* <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 mt-8 gap-4">
         {houses === undefined ? (
           // 🔥 SHOW SKELETON WHILE FETCHING
           Array.from({ length: 6 }).map((_, i) => <HouseCardSkeleton key={i} />)
@@ -193,7 +230,88 @@ const Hero = () => {
             </Link>
           ))
         )}
+      </div> */}
+
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 mt-8 gap-4">
+        {status === "LoadingFirstPage" ? (
+          Array.from({ length: PAGE_SIZE }).map((_, i) => (
+            <HouseCardSkeleton key={i} />
+          ))
+        ) : results.length === 0 ? (
+          <p className="col-span-full text-center text-gray-500">
+            No listings found
+          </p>
+        ) : (
+          results.map((house) => (
+            <Link href={`/house/${house._id}`} key={house._id}>
+              <HouseCard
+                {...house}
+                onDelete={async (id) => {
+                  await deleteHouse({ id });
+                }}
+              />
+            </Link>
+          ))
+        )}
       </div>
+
+      <Pagination className="mt-10">
+        <PaginationContent>
+          {/* Previous */}
+          <PaginationItem>
+            <PaginationPrevious
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                if (page > 1) handlePrev();
+              }}
+            />
+          </PaginationItem>
+
+          {/* Page numbers (simple version) */}
+          {[...Array(page)].map((_, i) => (
+            <PaginationItem key={i}>
+              <PaginationLink
+                href="#"
+                isActive={page === i + 1}
+                onClick={(e) => e.preventDefault()}
+              >
+                {i + 1}
+              </PaginationLink>
+            </PaginationItem>
+          ))}
+
+          {/* Next */}
+          <PaginationItem>
+            <PaginationNext
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNext();
+              }}
+            />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
+
+      {/* Load more */}
+      {/* {status === "CanLoadMore" && (
+        <div className="flex justify-center mt-8">
+          <Button
+            variant="outline"
+            onClick={() => loadMore(PAGE_SIZE)}
+            disabled={status !== "CanLoadMore"}
+          >
+            Load more
+          </Button>
+        </div>
+      )} */}
+
+      {status === "Exhausted" && results.length > 0 && (
+        <p className="text-center text-gray-400 text-sm mt-6">
+          You&apos;ve seen all listings
+        </p>
+      )}
 
       {/* <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 mt-8 gap-4">
         {houses?.map((house) => (

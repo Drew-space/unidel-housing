@@ -41,7 +41,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className="py-2 px-4 fixed top-0 w-full z-10 flex items-center justify-between md:px-6 px-1
+      className="py-2 px-4 fixed top-0 w-full z-10 flex items-center justify-between md:px-6 
 bg-white/10 backdrop-blur-md border-b border-white/20"
     >
       {/* Logo and nav links */}
@@ -66,7 +66,7 @@ bg-white/10 backdrop-blur-md border-b border-white/20"
           {navLink.map((link) =>
             link.requiresAuth ? (
               <SignInButton key={link.name} mode="modal">
-                <span className="text-sm font-medium hover:text-[#7c3aed] cursor-pointer">
+                <span className="text-lg text-blue-500 font-medium hover:text-[#7c3aed] cursor-pointer">
                   {link.name}
                 </span>
               </SignInButton>
