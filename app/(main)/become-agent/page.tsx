@@ -3,7 +3,7 @@
 import React from "react";
 
 const BecomeAgentPage = () => {
-  const phoneNumber = "07061673695";
+  const phoneNumber = "2347061673695";
   const message = encodeURIComponent(
     "Hi, I would like to become an agent on Ruum.",
   );
