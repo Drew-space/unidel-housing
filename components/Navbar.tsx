@@ -20,11 +20,21 @@ const Navbar = () => {
   const role = user?.publicMetadata?.role || "user"; // default to normal user
   const isAgentOrAdmin = role === "agent" || role === "admin";
 
+  // const navLink = [
+  //   { name: "Home", hrefs: "/" },
+  //   {
+  //     name: isAgentOrAdmin ? "Dashboard" : "Become an Agent",
+  //     hrefs: isAgentOrAdmin ? "/dashboard" : "/become-agent",
+  //   },
+  //   { name: "Saved", hrefs: "/favourites" },
+  // ];
+
   const navLink = [
     { name: "Home", hrefs: "/" },
     {
       name: isAgentOrAdmin ? "Dashboard" : "Become an Agent",
-      hrefs: isAgentOrAdmin ? "/dashboard" : "/become-agent",
+      hrefs: isAgentOrAdmin ? "/dashboard" : isSignedIn ? "/become-agent" : "#", // 👈 important
+      requiresAuth: !isSignedIn && !isAgentOrAdmin,
     },
     { name: "Saved", hrefs: "/favourites" },
   ];
@@ -43,7 +53,7 @@ bg-white/10 backdrop-blur-md border-b border-white/20"
         </Link>
 
         <div className="hidden sm:flex items-center gap-6">
-          {navLink.map((link) => (
+          {/* {navLink.map((link) => (
             <Link
               key={link.name}
               href={link.hrefs}
@@ -51,7 +61,25 @@ bg-white/10 backdrop-blur-md border-b border-white/20"
             >
               {link.name}
             </Link>
-          ))}
+          ))} */}
+
+          {navLink.map((link) =>
+            link.requiresAuth ? (
+              <SignInButton key={link.name} mode="modal">
+                <span className="text-sm font-medium hover:text-[#7c3aed] cursor-pointer">
+                  {link.name}
+                </span>
+              </SignInButton>
+            ) : (
+              <Link
+                key={link.name}
+                href={link.hrefs}
+                className="text-sm font-medium hover:text-[#7c3aed] transition-colors"
+              >
+                {link.name}
+              </Link>
+            ),
+          )}
         </div>
       </div>
 
