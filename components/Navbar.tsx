@@ -41,7 +41,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className="py-2 px-4 fixed top-0 w-full z-10 flex items-center justify-between md:px-6 
+      className="py-2 px-4 fixed top-0 w-full z-50 flex items-center justify-between md:px-6 
 bg-white/10 backdrop-blur-md border-b border-white/20"
     >
       {/* Logo and nav links */}
