@@ -104,16 +104,42 @@ bg-white/10 backdrop-blur-md border-b border-white/20"
         </Show>
 
         <Show when="signed-out">
+          <>
+            {/* Mobile: Become an Agent */}
+            <SignInButton mode="modal">
+              <Button
+                variant="outline"
+                size="sm"
+                className="flex lg:hidden  hover:bg-[#7c3aed] hover:text-white items-center text-white bg-[#7c3aed] gap-2"
+              >
+                Become an Agent
+              </Button>
+            </SignInButton>
+
+            {/* Desktop: Login */}
+            <SignInButton mode="modal">
+              <Button
+                variant="outline"
+                size="sm"
+                className="hidden bg-[#7c3aed] hover:bg-[#7c3aed]  hover:text-white text-white lg:flex items-center gap-2"
+              >
+                Login
+              </Button>
+            </SignInButton>
+          </>
+        </Show>
+
+        {/* <Show when="signed-out">
           <SignInButton mode="modal">
             <Button
               variant="outline"
               size="sm"
               className="flex items-center text-white bg-[#7c3aed] gap-2"
             >
-              Login
+              Become an Agent
             </Button>
           </SignInButton>
-        </Show>
+        </Show> */}
       </div>
     </nav>
   );
