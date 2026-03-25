@@ -27,6 +27,7 @@ import {
   LucideTrash,
   LucideTrash2,
 } from "lucide-react";
+import HouseCardSkeleton from "@/components/Skeleton";
 
 type Location =
   | "Alihame"
@@ -179,6 +180,30 @@ const Hero = () => {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 mt-8 gap-4">
+        {houses === undefined ? (
+          // 🔥 SHOW SKELETON WHILE FETCHING
+          Array.from({ length: 6 }).map((_, i) => <HouseCardSkeleton key={i} />)
+        ) : houses.length === 0 ? (
+          // ❌ EMPTY STATE (important)
+          <p className="col-span-full text-center text-gray-500">
+            No listings found
+          </p>
+        ) : (
+          // ✅ DATA LOADED
+          houses.map((house) => (
+            <Link href={`/house/${house._id}`} key={house._id}>
+              <HouseCard
+                {...house}
+                onDelete={async (id) => {
+                  await deleteHouse({ id });
+                }}
+              />
+            </Link>
+          ))
+        )}
+      </div>
+
+      {/* <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 mt-8 gap-4">
         {houses?.map((house) => (
           <Link href={`/house/${house._id}`} key={house._id}>
             <HouseCard
@@ -189,7 +214,7 @@ const Hero = () => {
             />
           </Link>
         ))}
-      </div>
+      </div> */}
     </section>
   );
 };
