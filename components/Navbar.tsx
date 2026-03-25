@@ -66,7 +66,7 @@ bg-white/10 backdrop-blur-md border-b border-white/20"
           {navLink.map((link) =>
             link.requiresAuth ? (
               <SignInButton key={link.name} mode="modal">
-                <span className="text-lg text-blue-500 font-medium hover:text-[#7c3aed] cursor-pointer">
+                <span className="text-md     font-medium hover:text-[#7c3aed]   cursor-pointer">
                   {link.name}
                 </span>
               </SignInButton>

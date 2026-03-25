@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "sonner";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Ruum – Student Housing Made Easy",
@@ -35,6 +36,7 @@ export default function MainLayout({
       <TooltipProvider>
         <main className="flex-1 pt-8 ">{children}</main>
       </TooltipProvider>
+      <Footer />
     </div>
   );
 }
