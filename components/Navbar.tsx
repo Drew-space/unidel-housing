@@ -20,15 +20,6 @@ const Navbar = () => {
   const role = user?.publicMetadata?.role || "user"; // default to normal user
   const isAgentOrAdmin = role === "agent" || role === "admin";
 
-  // const navLink = [
-  //   { name: "Home", hrefs: "/" },
-  //   {
-  //     name: isAgentOrAdmin ? "Dashboard" : "Become an Agent",
-  //     hrefs: isAgentOrAdmin ? "/dashboard" : "/become-agent",
-  //   },
-  //   { name: "Saved", hrefs: "/favourites" },
-  // ];
-
   const navLink = [
     { name: "Home", hrefs: "/" },
     {
