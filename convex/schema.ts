@@ -70,6 +70,5 @@ export default defineSchema({
     .index("by_user_and_house", ["userId", "houseId"]),
 });
 
-// schema.ts
 // bunx convex import --table housePost seed.json
 // bunx convex import --table housePost seed.json --replace

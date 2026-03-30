@@ -44,16 +44,6 @@ bg-white/10 backdrop-blur-md border-b border-white/20"
         </Link>
 
         <div className="hidden sm:flex items-center gap-6">
-          {/* {navLink.map((link) => (
-            <Link
-              key={link.name}
-              href={link.hrefs}
-              className="text-sm font-medium hover:text-[#7c3aed] transition-colors"
-            >
-              {link.name}
-            </Link>
-          ))} */}
-
           {navLink.map((link) =>
             link.requiresAuth ? (
               <SignInButton key={link.name} mode="modal">
