@@ -24,6 +24,19 @@ const Footer = () => {
 
   return (
     <footer className="mx-auto container py-10  ">
+      <Separator className="w-full mt-4" />
+      <div className="">
+        <p className="text-center py-4">
+          &copy; Copy {new Date().getFullYear()} made by{" "}
+          <Link
+            href={"https://github.com/Drew-space"}
+            className="underline font-semibold"
+          >
+            Drew
+          </Link>
+          ❤️ AllRights reserved{" "}
+        </p>
+      </div>
       <div className="flex flex-col md:flex-row mx-auto justify-between items-center gap-6">
         <h1 className="text-2xl font-sans font-extrabold md:text-3xl tracking-tighter">
           RU<span className="text-[#7c3aed]">UM</span>
@@ -48,19 +61,6 @@ const Footer = () => {
             ),
           )}
         </div>
-      </div>
-      <Separator className="w-full mt-4" />
-      <div className="">
-        <p className="text-center py-4">
-          &copy; Copy {new Date().getFullYear()} made by{" "}
-          <Link
-            href={"https://github.com/Drew-space"}
-            className="underline font-semibold"
-          >
-            Drew
-          </Link>
-          ❤️ AllRights reserved{" "}
-        </p>
       </div>
     </footer>
   );
