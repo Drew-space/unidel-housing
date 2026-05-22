@@ -40,8 +40,8 @@ function StarRating({
         >
           <Star
             className="w-5 h-5"
-            fill={star <= (hovered || value) ? "#f59e0b" : "transparent"}
-            stroke={star <= (hovered || value) ? "#f59e0b" : "#6b7280"}
+            fill={star <= (hovered || value) ? "#7c3aed" : "transparent"}
+            stroke={star <= (hovered || value) ? "#7c3aed" : "#6b7280"}
           />
         </button>
       ))}
@@ -78,7 +78,7 @@ export default function AgentProfilePage() {
   if (agent === undefined) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="w-6 h-6 rounded-full border-2 border-black border-t-transparent animate-spin" />
+        <div className="w-6 h-6 rounded-full border-2 border-[#7c3aed] border-t-transparent animate-spin" />
       </div>
     );
   }
