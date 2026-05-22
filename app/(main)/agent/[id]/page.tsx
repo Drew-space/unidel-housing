@@ -105,6 +105,7 @@ export default function AgentProfilePage() {
         comment,
       });
       toast.success(myReview ? "Review updated" : "Review submitted");
+      setComment("");
     } catch (e: unknown) {
       toast.error(e instanceof Error ? e.message : "Something went wrong");
     } finally {
