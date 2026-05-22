@@ -16,6 +16,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { Star, Mail, Home, ShieldCheck, MessageSquare } from "lucide-react";
 import HouseCard from "@/components/HouseCard";
+import Link from "next/link";
 
 function StarRating({
   value,
@@ -126,19 +127,18 @@ export default function AgentProfilePage() {
             </AvatarFallback>
           </Avatar>
           {/* Green verified badge — bottom right of avatar */}
-          <div className="absolute bottom-0.5 right-0.5 w-6 h-6 rounded-full bg-green-500 border-2 border-white flex items-center justify-center shadow">
+          <div className="absolute bottom-0.5 right-0.5 w-6 h-6 rounded-full bg-[#7c3aed] border-2 border-white flex items-center justify-center shadow">
             <ShieldCheck className="w-3 h-3 text-white" />
           </div>
         </div>
 
         {/* Name */}
         <div className="space-y-0.5">
-          <h1 className="text-xl font-semibold tracking-tight">{agent.name}</h1>
-          <p className="text-sm text-muted-foreground">@{agent.username}</p>
+          <p className="text-sm text-muted-foreground">{agent.username}</p>
         </div>
 
         {/* Verified status text badge */}
-        <Badge className="bg-green-50 text-green-700 border border-green-200 hover:bg-green-50 gap-1.5 px-3 py-1 text-xs font-medium">
+        <Badge className="bg-[#7c3aed] text-white border border-[#7c3aed]/80 gap-1.5 px-3 py-1 text-xs font-medium">
           <ShieldCheck className="w-3 h-3" />
           Verified Agent
         </Badge>
@@ -185,9 +185,12 @@ export default function AgentProfilePage() {
               No listings yet.
             </p>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            // Change the grid
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {listings.map((house) => (
-                <HouseCard key={house._id} {...house} />
+                <Link key={house._id} href={`/house/${house._id}`}>
+                  <HouseCard {...house} />
+                </Link>
               ))}
             </div>
           )}
@@ -213,7 +216,7 @@ export default function AgentProfilePage() {
                 size="sm"
                 onClick={handleSubmitReview}
                 disabled={submitting}
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto bg-[#7c3aed] hover:bg-[#7c3aed]/80"
               >
                 {submitting
                   ? "Submitting..."
