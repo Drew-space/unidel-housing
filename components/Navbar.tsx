@@ -24,7 +24,7 @@ const Navbar = () => {
     { name: "Home", hrefs: "/" },
     {
       name: isAgentOrAdmin ? "Dashboard" : "Become an Agent",
-      hrefs: isAgentOrAdmin ? "/dashboard" : isSignedIn ? "/become-agent" : "#",
+      hrefs: isAgentOrAdmin ? "/dashboard" : isSignedIn ? "/kyc" : "#",
       requiresAuth: !isSignedIn && !isAgentOrAdmin,
     },
     { name: "Saved", hrefs: "/favourites" },
