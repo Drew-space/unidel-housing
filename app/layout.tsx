@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { Mona_Sans, Inter } from "next/font/google";
 import { Toaster } from "sonner";
 import Navbar from "@/components/Navbar";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const mona_sans = Mona_Sans({
   subsets: ["latin"],
@@ -45,7 +46,9 @@ export default function RootLayout({
     >
       <body>
         <ConvexClientProvider>
-          <main className="">{children}</main>
+          <main className="">
+            <TooltipProvider>{children}</TooltipProvider>
+          </main>
           <Toaster />
         </ConvexClientProvider>
       </body>

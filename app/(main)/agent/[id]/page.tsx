@@ -14,7 +14,21 @@ import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { Star, Mail, Home, ShieldCheck, MessageSquare } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import {
+  Notification03Icon,
+  House03Icon,
+  Home09Icon,
+} from "@hugeicons/core-free-icons";
+
+import {
+  Star,
+  Mail,
+  Home,
+  ShieldCheck,
+  MessageSquare,
+  MessageCircle,
+} from "lucide-react";
 import HouseCard from "@/components/HouseCard";
 import Link from "next/link";
 
@@ -169,11 +183,12 @@ export default function AgentProfilePage() {
       <Tabs defaultValue="listings">
         <TabsList className="w-full">
           <TabsTrigger value="listings" className="flex-1 gap-1.5">
-            <Home className="w-3.5 h-3.5" />
+            <HugeiconsIcon icon={Home09Icon} />
+            {/* <Home className="w-3.5 h-3.5" /> */}
             Listings ({listings?.length ?? 0})
           </TabsTrigger>
           <TabsTrigger value="reviews" className="flex-1 gap-1.5">
-            <MessageSquare className="w-3.5 h-3.5" />
+            <MessageCircle className="w-3.5 h-3.5" />
             Reviews ({reviews?.length ?? 0})
           </TabsTrigger>
         </TabsList>

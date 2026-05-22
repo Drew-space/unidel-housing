@@ -48,6 +48,7 @@ export function HouseSubmitButton({ files, onReset }: HouseSubmitButtonProps) {
 
   return (
     <Button
+      className="bg-[#7c3aed] hover:bg-[#7c3aed]/80"
       type="submit"
       disabled={loading}
       onClick={async (e) => {

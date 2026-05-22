@@ -5,17 +5,7 @@ import { cn } from "@/lib/utils";
 
 import { Toaster } from "sonner";
 
-// const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
 
 export const metadata: Metadata = {
   title: "Ruum – Student Housing Made Easy",

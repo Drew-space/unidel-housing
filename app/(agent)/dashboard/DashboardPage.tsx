@@ -33,7 +33,9 @@ export default function DashboardPage() {
           </div>
           <div>
             <Link href="/dashboard/create-listing">
-              <Button variant={"outline"}>+ Add listing</Button>
+              <Button className="w-full bg-[#7c3aed] hover:bg-[#7c3aed]/80">
+                + Add listing
+              </Button>
             </Link>
           </div>
         </div>

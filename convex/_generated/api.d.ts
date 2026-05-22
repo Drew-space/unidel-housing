@@ -8,6 +8,7 @@
  * @module
  */
 
+import type * as admin from "../admin.js";
 import type * as favourites from "../favourites.js";
 import type * as housePost from "../housePost.js";
 import type * as http from "../http.js";
@@ -22,6 +23,7 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  admin: typeof admin;
   favourites: typeof favourites;
   housePost: typeof housePost;
   http: typeof http;

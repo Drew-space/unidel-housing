@@ -1,3 +1,5 @@
+"use client";
+
 import { AppSidebar } from "@/components/app-sidebar";
 
 import { SiteHeader } from "@/components/site-header";
@@ -5,8 +7,12 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 import { TooltipProvider } from "@/components/ui/tooltip";
 import DashboardPage from "./DashboardPage";
+import { useRoleGuard } from "@/hooks/useRoleGuard";
 
 export default function Page() {
+  const currentUser = useRoleGuard();
+  if (!currentUser) return null;
+
   return (
     <TooltipProvider>
       <SidebarProvider

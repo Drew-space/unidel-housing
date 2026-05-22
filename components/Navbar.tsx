@@ -11,13 +11,19 @@ import {
   Show,
 } from "@clerk/nextjs";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "./ui/sheet";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 const Navbar = () => {
-  const { user, isLoaded, isSignedIn } = useUser();
+  const { isLoaded, isSignedIn } = useUser();
+
+  // Read role from Convex — source of truth
+  const currentUser = useQuery(api.users.getCurrentUser);
+  if (!isLoaded || currentUser === undefined) return null;
+
   if (!isLoaded) return null;
 
-  // Get user role
-  const role = user?.publicMetadata?.role || "user"; // default to normal user
+  const role = currentUser?.role ?? "user";
   const isAgentOrAdmin = role === "agent" || role === "admin";
 
   const navLink = [
@@ -31,10 +37,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav
-      className="py-2 px-4 fixed top-0 w-full z-50 flex items-center justify-between md:px-6 
-bg-white/10 backdrop-blur-md border-b border-white/20"
-    >
+    <nav className="py-2 px-4 fixed top-0 w-full z-50 flex items-center justify-between md:px-6 bg-white/10 backdrop-blur-md border-b border-white/20">
       {/* Logo and nav links */}
       <div className="flex items-center gap-6">
         <Link href="/">
@@ -47,7 +50,7 @@ bg-white/10 backdrop-blur-md border-b border-white/20"
           {navLink.map((link) =>
             link.requiresAuth ? (
               <SignInButton key={link.name} mode="modal">
-                <span className="text-md     font-medium hover:text-[#7c3aed]   cursor-pointer">
+                <span className="text-md font-medium hover:text-[#7c3aed] cursor-pointer">
                   {link.name}
                 </span>
               </SignInButton>
@@ -114,23 +117,20 @@ bg-white/10 backdrop-blur-md border-b border-white/20"
 
         <Show when="signed-out">
           <>
-            {/* Mobile: Become an Agent */}
             <SignInButton mode="modal">
               <Button
                 variant="outline"
                 size="sm"
-                className="flex lg:hidden  hover:bg-[#7c3aed] hover:text-white items-center text-white bg-[#7c3aed] gap-2"
+                className="flex lg:hidden hover:bg-[#7c3aed] hover:text-white items-center text-white bg-[#7c3aed] gap-2"
               >
                 Login
               </Button>
             </SignInButton>
-
-            {/* Desktop: Login */}
             <SignInButton mode="modal">
               <Button
                 variant="outline"
                 size="sm"
-                className="hidden bg-[#7c3aed] hover:bg-[#7c3aed]  hover:text-white text-white lg:flex items-center gap-2"
+                className="hidden bg-[#7c3aed] hover:bg-[#7c3aed] hover:text-white text-white lg:flex items-center gap-2"
               >
                 Login
               </Button>

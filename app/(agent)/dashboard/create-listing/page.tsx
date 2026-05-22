@@ -21,9 +21,10 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { X, ImagePlus } from "lucide-react";
 import { HouseSubmitButton } from "@/components/ui/SubmitButton";
+import { useRoleGuard } from "@/hooks/useRoleGuard";
 
 const AMENITIES = [
   { value: "Bed", label: "Bed" },
@@ -99,13 +100,17 @@ export default function CreateListingPage() {
     reset();
   };
 
+  const currentUser = useRoleGuard();
+  if (!currentUser) return null;
+
   return (
     <div className="container mx-auto py-8">
       <Link
-        className={buttonVariants({ variant: "outline" })}
+        // className="bg-[#7c3aed] hover:bg-[#7c3aed]/80"
+        // className={buttonVariants({ variant: "outline" })}
         href="/dashboard"
       >
-        Go Back
+        <Button className="bg-[#7c3aed] hover:bg-[#7c3aed]/80">Go Back</Button>
       </Link>
 
       <div className="flex items-center justify-center mt-6">
