@@ -11,6 +11,8 @@
 import type * as favourites from "../favourites.js";
 import type * as housePost from "../housePost.js";
 import type * as http from "../http.js";
+import type * as kyc from "../kyc.js";
+import type * as reviews from "../reviews.js";
 import type * as users from "../users.js";
 
 import type {
@@ -23,6 +25,8 @@ declare const fullApi: ApiFromModules<{
   favourites: typeof favourites;
   housePost: typeof housePost;
   http: typeof http;
+  kyc: typeof kyc;
+  reviews: typeof reviews;
   users: typeof users;
 }>;
 

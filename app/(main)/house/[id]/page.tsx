@@ -71,19 +71,21 @@ const HousePage = async ({ params }: HousePageProps) => {
         {/* All details below image */}
         <div className="mt-8 flex flex-col gap-6">
           {/* Author */}
-          <div className="flex items-center gap-3">
-            <img
-              src={authorImage}
-              alt={authorName}
-              className="h-10 w-10 rounded-full object-cover"
-            />
-            <div>
-              <p className="text-xs text-gray-400">Listed by</p>
-              <p className="text-sm font-medium text-gray-700">
-                {authorUsername}
-              </p>
+          <Link href={`/agent/${house.authorId}`}>
+            <div className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer">
+              <img
+                src={authorImage}
+                alt={authorName}
+                className="h-10 w-10 rounded-full object-cover"
+              />
+              <div>
+                <p className="text-xs text-gray-400">Listed by</p>
+                <p className="text-sm font-medium text-gray-700">
+                  {authorUsername}
+                </p>
+              </div>
             </div>
-          </div>
+          </Link>
 
           {/* Title + Price */}
           <div>

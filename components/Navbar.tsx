@@ -121,7 +121,7 @@ bg-white/10 backdrop-blur-md border-b border-white/20"
                 size="sm"
                 className="flex lg:hidden  hover:bg-[#7c3aed] hover:text-white items-center text-white bg-[#7c3aed] gap-2"
               >
-                Become an Agent
+                Login
               </Button>
             </SignInButton>
 
@@ -137,18 +137,6 @@ bg-white/10 backdrop-blur-md border-b border-white/20"
             </SignInButton>
           </>
         </Show>
-
-        {/* <Show when="signed-out">
-          <SignInButton mode="modal">
-            <Button
-              variant="outline"
-              size="sm"
-              className="flex items-center text-white bg-[#7c3aed] gap-2"
-            >
-              Become an Agent
-            </Button>
-          </SignInButton>
-        </Show> */}
       </div>
     </nav>
   );
