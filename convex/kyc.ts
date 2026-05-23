@@ -54,11 +54,7 @@ export const submitKyc = mutation({
     if (existing?.status === "approved") {
       throw new Error("Your KYC has already been approved.");
     }
-    if (existing?.status === "rejected") {
-      throw new Error(
-        "Your KYC submission was rejected. Please contact support.",
-      );
-    }
+    // ✅ rejected users CAN resubmit — no error thrown
 
     await ctx.db.insert("kycSubmissions", {
       userId: user._id,

@@ -1,7 +1,6 @@
 import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
 
-// helper to verify caller is admin
 async function requireAdmin(ctx: any) {
   const identity = await ctx.auth.getUserIdentity();
   if (!identity) throw new Error("Not authenticated");
@@ -19,6 +18,16 @@ export const getAllUsers = query({
   handler: async (ctx) => {
     await requireAdmin(ctx);
     return await ctx.db.query("users").order("desc").collect();
+  },
+});
+
+// ── Get all agents ────────────────────────────────────────────────────────────
+export const getAgents = query({
+  args: {},
+  handler: async (ctx) => {
+    await requireAdmin(ctx);
+    const users = await ctx.db.query("users").order("desc").collect();
+    return users.filter((u) => u.role === "agent");
   },
 });
 
@@ -48,19 +57,16 @@ export const deleteUser = mutation({
   args: { userId: v.id("users") },
   handler: async (ctx, args) => {
     await requireAdmin(ctx);
-    // Delete their house posts
     const posts = await ctx.db
       .query("housePost")
       .withIndex("by_author", (q) => q.eq("authorId", args.userId))
       .collect();
     await Promise.all(posts.map((p) => ctx.db.delete(p._id)));
-    // Delete their KYC
     const kyc = await ctx.db
       .query("kycSubmissions")
       .withIndex("by_user", (q) => q.eq("userId", args.userId))
       .collect();
     await Promise.all(kyc.map((k) => ctx.db.delete(k._id)));
-    // Delete the user
     await ctx.db.delete(args.userId);
   },
 });

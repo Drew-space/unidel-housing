@@ -192,7 +192,8 @@ export default function AdminKycPage() {
   }
 
   return (
-    <div className="space-y-6 max-w-4xl">
+    // ✅ centered, max width, padding
+    <div className="flex flex-1 flex-col gap-6 p-4 max-w-4xl w-full mx-auto">
       <div>
         <h1 className="text-lg font-semibold">KYC Queue</h1>
         <p className="text-sm text-muted-foreground">
@@ -253,8 +254,7 @@ export default function AdminKycPage() {
 
           {selected && (
             <div className="space-y-4 text-sm">
-              {/* Info */}
-              <div className="grid grid-cols-2 gap-3 text-sm">
+              <div className="grid grid-cols-2 gap-3">
                 <div>
                   <p className="text-xs text-muted-foreground">Full name</p>
                   <p className="font-medium">{selected.fullLegalName}</p>
@@ -277,7 +277,6 @@ export default function AdminKycPage() {
                 </div>
               </div>
 
-              {/* Documents */}
               <div className="space-y-3">
                 <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
                   Documents
@@ -307,18 +306,16 @@ export default function AdminKycPage() {
                 </div>
               </div>
 
-              {/* Status */}
               <div className="flex items-center gap-2">
                 <p className="text-xs text-muted-foreground">Status</p>
                 {statusBadge(selected.status)}
               </div>
               {selected.rejectionReason && (
                 <p className="text-xs text-red-600">
-                  Rejection reason: {selected.rejectionReason}
+                  Reason: {selected.rejectionReason}
                 </p>
               )}
 
-              {/* Reject input */}
               {showRejectInput && (
                 <div className="space-y-1.5">
                   <Label className="text-xs">Rejection reason</Label>

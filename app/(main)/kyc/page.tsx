@@ -18,7 +18,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { Badge } from "@/components/ui/badge";
 import {
   ShieldCheck,
   Upload,
@@ -118,7 +117,6 @@ function SelfieUploadField({
         </div>
       ) : (
         <div className="grid grid-cols-2 gap-3">
-          {/* Take photo — uses front camera on mobile */}
           <div
             onClick={() => cameraRef.current?.click()}
             className="flex flex-col items-center justify-center gap-1.5 border border-dashed rounded-md h-24 cursor-pointer transition-colors text-sm text-muted-foreground hover:border-foreground/40"
@@ -126,8 +124,6 @@ function SelfieUploadField({
             <Camera className="w-5 h-5" />
             <span className="text-xs">Take photo</span>
           </div>
-
-          {/* Upload from gallery */}
           <div
             onClick={() => galleryRef.current?.click()}
             className="flex flex-col items-center justify-center gap-1.5 border border-dashed rounded-md h-24 cursor-pointer transition-colors text-sm text-muted-foreground hover:border-foreground/40"
@@ -138,7 +134,6 @@ function SelfieUploadField({
         </div>
       )}
 
-      {/* Camera input — front-facing camera on mobile */}
       <input
         ref={cameraRef}
         type="file"
@@ -147,7 +142,6 @@ function SelfieUploadField({
         className="hidden"
         onChange={handleFile}
       />
-      {/* Gallery input — file picker */}
       <input
         ref={galleryRef}
         type="file"
@@ -162,9 +156,11 @@ function SelfieUploadField({
 function KycStatusBanner({
   status,
   reason,
+  onResubmit,
 }: {
   status: "pending" | "approved" | "rejected";
   reason?: string;
+  onResubmit?: () => void;
 }) {
   if (status === "pending") {
     return (
@@ -173,7 +169,7 @@ function KycStatusBanner({
         <div>
           <p className="text-sm font-medium text-amber-800">KYC Under Review</p>
           <p className="text-xs text-amber-700 mt-0.5">
-            Your submission is being reviewed. You&lsquo;ll be notified once a
+            Your submission is being reviewed. You&apos;ll be notified once a
             decision is made.
           </p>
         </div>
@@ -195,17 +191,24 @@ function KycStatusBanner({
     );
   }
 
+  // Rejected
   return (
     <div className="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4">
       <XCircle className="w-4 h-4 text-red-600 mt-0.5 shrink-0" />
-      <div>
+      <div className="flex-1 space-y-2">
         <p className="text-sm font-medium text-red-800">KYC Rejected</p>
-        {reason && (
-          <p className="text-xs text-red-700 mt-0.5">Reason: {reason}</p>
-        )}
-        <p className="text-xs text-red-700 mt-1">
-          Please contact support for further assistance.
+        {reason && <p className="text-xs text-red-700">Reason: {reason}</p>}
+        <p className="text-xs text-red-700">
+          Your submission was rejected. Please review the reason above and
+          resubmit with the correct documents.
         </p>
+        <Button
+          size="sm"
+          onClick={onResubmit}
+          className="bg-red-600 hover:bg-red-700 text-white text-xs h-8 mt-1"
+        >
+          Submit documents again
+        </Button>
       </div>
     </div>
   );
@@ -216,6 +219,8 @@ export default function KycPage() {
   const kycStatus = useQuery(api.kyc.getMyKycStatus);
   const generateUploadUrl = useMutation(api.kyc.generateUploadUrl);
   const submitKyc = useMutation(api.kyc.submitKyc);
+
+  const [allowResubmit, setAllowResubmit] = useState(false);
 
   const [form, setForm] = useState({
     fullLegalName: "",
@@ -233,13 +238,10 @@ export default function KycPage() {
   }>({});
 
   const [submitting, setSubmitting] = useState(false);
-  const [consent, setConsent] = useState({
-    data: false,
-    terms: false,
-  });
+  const [consent, setConsent] = useState({ data: false, terms: false });
 
-  // If KYC already exists, show status screen
-  if (kycStatus !== undefined && kycStatus !== null) {
+  // Show status screen if KYC exists — unless rejected and user wants to resubmit
+  if (kycStatus !== undefined && kycStatus !== null && !allowResubmit) {
     return (
       <div className="max-w-lg mx-auto px-4 py-16 space-y-6">
         <div className="space-y-1">
@@ -251,6 +253,7 @@ export default function KycPage() {
         <KycStatusBanner
           status={kycStatus.status}
           reason={kycStatus.rejectionReason}
+          onResubmit={() => setAllowResubmit(true)}
         />
       </div>
     );
@@ -310,6 +313,7 @@ export default function KycPage() {
       });
 
       toast.success("KYC submitted successfully. We'll review it shortly.");
+      setAllowResubmit(false);
       router.refresh();
     } catch (e: unknown) {
       toast.error(e instanceof Error ? e.message : "Submission failed");
@@ -325,7 +329,9 @@ export default function KycPage() {
         <div className="flex items-center gap-2">
           <ShieldCheck className="w-5 h-5 text-[#7c3aed]" />
           <h1 className="text-lg font-semibold text-[#7c3aed]">
-            Become a Verified Agent
+            {allowResubmit
+              ? "Resubmit KYC Documents"
+              : "Become a Verified Agent"}
           </h1>
         </div>
         <p className="text-sm text-muted-foreground">
@@ -339,7 +345,6 @@ export default function KycPage() {
         <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
           Personal Information
         </p>
-
         <div className="space-y-1.5">
           <Label htmlFor="fullLegalName">Full legal name</Label>
           <Input
@@ -351,7 +356,6 @@ export default function KycPage() {
             }
           />
         </div>
-
         <div className="space-y-1.5">
           <Label htmlFor="phone">Phone number</Label>
           <Input
@@ -363,7 +367,6 @@ export default function KycPage() {
             }
           />
         </div>
-
         <div className="space-y-1.5">
           <Label htmlFor="address">Current address</Label>
           <Input
@@ -384,7 +387,6 @@ export default function KycPage() {
         <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
           Government-Issued ID
         </p>
-
         <div className="space-y-1.5">
           <Label>ID type</Label>
           <Select
@@ -405,7 +407,6 @@ export default function KycPage() {
             </SelectContent>
           </Select>
         </div>
-
         <div className="space-y-1.5">
           <Label htmlFor="idNumber">ID number</Label>
           <Input
@@ -417,14 +418,12 @@ export default function KycPage() {
             }
           />
         </div>
-
         <FileUploadField
           label="ID front photo"
           hint="Clear photo of the front of your ID"
           uploaded={!!files.idFront}
           onChange={(file) => setFiles((f) => ({ ...f, idFront: file }))}
         />
-
         <FileUploadField
           label="ID back photo (optional)"
           hint="Required for Driver's License and Voter's Card"
@@ -435,17 +434,15 @@ export default function KycPage() {
 
       <Separator />
 
-      {/* Selfie + utility bill */}
+      {/* Supporting docs */}
       <section className="space-y-4">
         <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
           Supporting Documents
         </p>
-
         <SelfieUploadField
           uploaded={!!files.selfie}
           onChange={(file) => setFiles((f) => ({ ...f, selfie: file }))}
         />
-
         <FileUploadField
           label="Utility bill"
           hint="Must be dated within the last 3 months and show your current address"
@@ -456,12 +453,11 @@ export default function KycPage() {
 
       <Separator />
 
-      {/* ── Legal consent ── */}
+      {/* Legal consent */}
       <section className="space-y-4">
         <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
           Legal Consent
         </p>
-
         <div className="rounded-lg border border-border bg-muted/40 p-4 text-xs text-muted-foreground leading-relaxed space-y-2">
           <p className="font-medium text-foreground text-sm">
             Before you submit, please read carefully:
@@ -490,7 +486,6 @@ export default function KycPage() {
         </div>
 
         <div className="space-y-3">
-          {/* Consent 1 — Data */}
           <div className="flex items-start gap-3">
             <Checkbox
               id="consent-data"
@@ -506,13 +501,11 @@ export default function KycPage() {
             >
               I consent to Ruum collecting, storing, and processing my personal
               information and identity documents for agent verification
-              purposes, in accordance with Nigeria&apos;s Data Protection Act
+              purposes, in accordance with Nigeria&lsquo;s Data Protection Act
               (NDPA) 2023. I understand my data will not be sold or shared with
               third parties without my explicit permission.
             </Label>
           </div>
-
-          {/* Consent 2 — Terms */}
           <div className="flex items-start gap-3">
             <Checkbox
               id="consent-terms"
@@ -537,11 +530,15 @@ export default function KycPage() {
       </section>
 
       <Button
-        className="w-full bg-[#7c3aed]"
+        className="w-full bg-[#7c3aed] hover:bg-[#6d28d9]"
         onClick={handleSubmit}
         disabled={submitting || !consent.data || !consent.terms}
       >
-        {submitting ? "Submitting..." : "Submit KYC"}
+        {submitting
+          ? "Submitting..."
+          : allowResubmit
+            ? "Resubmit KYC"
+            : "Submit KYC"}
       </Button>
 
       <p className="text-xs text-center text-muted-foreground pb-8">

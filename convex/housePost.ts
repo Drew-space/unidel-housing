@@ -203,3 +203,28 @@ export const getMyHousesById = query({
       .collect();
   },
 });
+
+// Add this to convex/housePost.ts
+
+export const deleteHouseAdmin = mutation({
+  args: { id: v.id("housePost") },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error("Not authenticated");
+
+    const admin = await ctx.db
+      .query("users")
+      .withIndex("by_clerkId", (q) => q.eq("clerkId", identity.subject))
+      .unique();
+    if (!admin || admin.role !== "admin") throw new Error("Not authorized");
+
+    const house = await ctx.db.get(args.id);
+    if (!house) throw new Error("House not found");
+
+    if (house.imageStorageId) {
+      await ctx.storage.delete(house.imageStorageId);
+    }
+
+    await ctx.db.delete(args.id);
+  },
+});

@@ -18,27 +18,17 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { EllipsisVertical, Search, Home } from "lucide-react";
-import Link from "next/link";
+import { EllipsisVertical, Search } from "lucide-react";
 
-export default function AdminPage() {
+export default function AdminAgentsPage() {
   const router = useRouter();
   const [search, setSearch] = useState("");
 
   const agents = useQuery(api.admin.getAgents);
-  const allHouses = useQuery(api.admin.getAllListings);
-  const allUsers = useQuery(api.admin.getAllUsers);
-  const pendingKyc = useQuery(api.kyc.getKycSubmissions, { status: "pending" });
-
   const setUserRole = useMutation(api.admin.setUserRole);
   const deleteUser = useMutation(api.admin.deleteUser);
 
-  const totalUsers = allUsers?.length ?? 0;
-  const totalListings = allHouses?.length ?? 0;
-  const totalAgents = agents?.length ?? 0;
-  const totalPending = pendingKyc?.length ?? 0;
-
-  const filteredAgents =
+  const filtered =
     agents?.filter(
       (a) =>
         a.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -69,93 +59,36 @@ export default function AdminPage() {
 
   return (
     <div className="flex flex-1 flex-col gap-4 p-4">
-      {/* ── Stat cards ── */}
-      <div className="flex gap-3 overflow-x-auto py-1 md:grid md:grid-cols-4 md:overflow-visible">
-        <div className="min-w-[130px] ring ring-[#7c3aed] rounded-xl bg-[#ede9fe] text-[#7c3aed] flex flex-col p-4 md:aspect-video shrink-0 md:shrink md:min-w-0">
-          <h1 className="text-sm font-medium">Total listings</h1>
-          <div className="flex flex-1 items-center justify-center py-4 md:py-0">
-            <p className="text-4xl font-semibold">{totalListings}</p>
-          </div>
-        </div>
-        <div className="min-w-[130px] rounded-xl bg-[#dbeafe] ring ring-blue-400 text-blue-600 flex flex-col p-4 md:aspect-video shrink-0 md:shrink md:min-w-0">
-          <h1 className="text-sm font-medium">Total users</h1>
-          <div className="flex flex-1 items-center justify-center py-4 md:py-0">
-            <p className="text-4xl font-semibold">{totalUsers}</p>
-          </div>
-        </div>
-        <div className="min-w-[130px] rounded-xl bg-[#dcfce7] ring ring-green-400 text-green-600 flex flex-col p-4 md:aspect-video shrink-0 md:shrink md:min-w-0">
-          <h1 className="text-sm font-medium">Verified agents</h1>
-          <div className="flex flex-1 items-center justify-center py-4 md:py-0">
-            <p className="text-4xl font-semibold">{totalAgents}</p>
-          </div>
-        </div>
-        <div className="min-w-[130px] rounded-xl bg-[#fef9c3] ring ring-yellow-400 text-yellow-600 flex flex-col p-4 md:aspect-video shrink-0 md:shrink md:min-w-0">
-          <h1 className="text-sm font-medium">Pending KYC</h1>
-          <div className="flex flex-1 items-center justify-center py-4 md:py-0">
-            <p className="text-4xl font-semibold">{totalPending}</p>
-          </div>
-        </div>
-      </div>
-
-      {/* ── Agents list ── */}
       <Card>
-        <CardHeader className="flex flex-row items-center justify-between gap-4 flex-wrap">
-          <div className="flex items-center justify-between w-full gap-3 flex-wrap">
-            {/* Left: title + search */}
-            <div className="flex flex-col gap-2 flex-1 min-w-0">
-              <CardTitle className="text-sm font-medium">Agents</CardTitle>
-              <div className="relative max-w-xs">
-                <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted-foreground" />
-                <Input
-                  placeholder="Search agents..."
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  className="pl-8 h-8 text-xs"
-                />
-              </div>
-            </div>
-
-            {/* Right: KYC queue + back to home */}
-            <div className="flex items-center gap-2 shrink-0">
-              <Button
-                size="sm"
-                variant="outline"
-                className="text-xs h-8"
-                onClick={() => router.push("/admin/kyc")}
-              >
-                KYC queue
-                {totalPending > 0 && (
-                  <span className="ml-1.5 bg-yellow-400 text-yellow-900 text-[10px] font-semibold rounded-full px-1.5">
-                    {totalPending}
-                  </span>
-                )}
-              </Button>
-              <Link href="/">
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="text-xs h-8 gap-1.5"
-                >
-                  <Home className="w-3.5 h-3.5" />
-                  Home
-                </Button>
-              </Link>
+        <CardHeader>
+          <div className="flex items-center justify-between gap-3 flex-wrap">
+            <CardTitle className="text-sm font-medium">
+              All Agents ({filtered.length})
+            </CardTitle>
+            <div className="relative max-w-xs w-full sm:w-auto">
+              <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted-foreground" />
+              <Input
+                placeholder="Search agents..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="pl-8 h-8 text-xs"
+              />
             </div>
           </div>
         </CardHeader>
 
         <CardContent>
-          <div className="flex flex-col gap-2 max-h-[500px] overflow-y-auto pr-1">
+          <div className="flex flex-col gap-2 max-h-[70vh] overflow-y-auto pr-1">
             {!agents ? (
               <p className="text-sm text-muted-foreground text-center py-10">
                 Loading...
               </p>
-            ) : filteredAgents.length === 0 ? (
+            ) : filtered.length === 0 ? (
               <p className="text-sm text-muted-foreground text-center py-10">
                 {search ? "No agents match your search." : "No agents yet."}
               </p>
             ) : (
-              filteredAgents.map((agent) => (
+              filtered.map((agent) => (
                 <div
                   key={agent._id}
                   className="flex items-center gap-3 border rounded-md p-3 cursor-pointer hover:bg-muted/50 transition-colors"
