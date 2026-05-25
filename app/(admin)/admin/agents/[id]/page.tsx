@@ -14,8 +14,8 @@ import {
   ArrowLeft,
   ShieldCheck,
   Home,
-  MessageSquare,
-  AlertTriangle,
+  MessageCircle,
+  Flag,
   Star,
 } from "lucide-react";
 import Link from "next/link";
@@ -105,6 +105,22 @@ function StarRating({ value }: { value: number }) {
   );
 }
 
+function ReportCount({ agentId }: { agentId: Id<"users"> }) {
+  const reports = useQuery(api.agentReports.getAgentReports, { agentId });
+  const count = reports?.length ?? 0;
+  return (
+    <span>
+      {count} report{count !== 1 ? "s" : ""}
+    </span>
+  );
+}
+
+function ReportCountTab({ agentId }: { agentId: Id<"users"> }) {
+  const reports = useQuery(api.agentReports.getAgentReports, { agentId });
+  const count = reports?.length ?? 0;
+  return <span className="text-red-500">Reports ({count})</span>;
+}
+
 export default function AdminAgentDetailPage() {
   const { id } = useParams();
   const router = useRouter();
@@ -160,18 +176,35 @@ export default function AdminAgentDetailPage() {
               </Badge>
             </div>
             <p className="text-sm text-muted-foreground">{agent.email}</p>
-            <div className="flex flex-wrap gap-4 pt-1 text-xs text-muted-foreground">
-              <span>{listings?.length ?? 0} listings</span>
-              {stats && stats.total > 0 && (
+            <div className="flex flex-wrap gap-4 pt-1 text-xs">
+              <span className="flex items-center gap-1 text-[#7c3aed]">
+                <Home className="w-3 h-3" />
                 <span>
-                  {stats.average} avg rating · {stats.total} reviews
+                  {listings?.length ?? 0} listing
+                  {(listings?.length ?? 0) !== 1 ? "s" : ""}
                 </span>
-              )}
+              </span>
+              <span className="flex items-center gap-1 text-blue-500">
+                <MessageCircle className="w-3 h-3" />
+                <span>
+                  {stats?.total ?? 0} review
+                  {(stats?.total ?? 0) !== 1 ? "s" : ""}
+                </span>
+              </span>
+              <span className="flex items-center gap-1 text-red-500">
+                <Flag className="w-3 h-3" />
+                <ReportCount agentId={id as Id<"users">} />
+              </span>
             </div>
           </div>
 
           <div className="flex gap-2 flex-wrap">
-            <Button size="sm" variant="outline" className="text-xs h-8">
+            <Button
+              size="sm"
+              variant="outline"
+              className="text-xs h-8"
+              onClick={() => router.push(`/admin/kyc`)}
+            >
               View KYC docs
             </Button>
             <Button
@@ -188,17 +221,30 @@ export default function AdminAgentDetailPage() {
       {/* Tabs */}
       <Tabs defaultValue="listings">
         <TabsList className="w-full">
-          <TabsTrigger value="listings" className="flex-1 gap-1.5 text-xs">
-            <Home className="w-3.5 h-3.5" />
-            Listings ({listings?.length ?? 0})
+          <TabsTrigger
+            value="listings"
+            className="flex-1 gap-1.5 text-xs data-[state=active]:text-[#7c3aed]"
+          >
+            <Home className="w-3.5 h-3.5 text-[#7c3aed]" />
+            <span className="text-[#7c3aed]">
+              Listings ({listings?.length ?? 0})
+            </span>
           </TabsTrigger>
-          <TabsTrigger value="reviews" className="flex-1 gap-1.5 text-xs">
-            <MessageSquare className="w-3.5 h-3.5" />
-            Reviews ({reviews?.length ?? 0})
+          <TabsTrigger
+            value="reviews"
+            className="flex-1 gap-1.5 text-xs data-[state=active]:text-blue-500"
+          >
+            <MessageCircle className="w-3.5 h-3.5 text-blue-500" />
+            <span className="text-blue-500">
+              Reviews ({reviews?.length ?? 0})
+            </span>
           </TabsTrigger>
-          <TabsTrigger value="reports" className="flex-1 gap-1.5 text-xs">
-            <AlertTriangle className="w-3.5 h-3.5" />
-            Reports
+          <TabsTrigger
+            value="reports"
+            className="flex-1 gap-1.5 text-xs data-[state=active]:text-red-500"
+          >
+            <Flag className="w-3.5 h-3.5 text-red-500" />
+            <ReportCountTab agentId={id as Id<"users">} />
           </TabsTrigger>
         </TabsList>
 

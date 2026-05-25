@@ -257,3 +257,33 @@ export const rejectKyc = mutation({
     });
   },
 });
+
+export const getKycByUserId = query({
+  args: { userId: v.id("users") },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error("Not authenticated");
+
+    const admin = await ctx.db
+      .query("users")
+      .withIndex("by_clerkId", (q) => q.eq("clerkId", identity.subject))
+      .unique();
+    if (!admin || admin.role !== "admin") throw new Error("Not authorized");
+
+    const sub = await ctx.db
+      .query("kycSubmissions")
+      .withIndex("by_user", (q) => q.eq("userId", args.userId))
+      .order("desc")
+      .first();
+    if (!sub) return null;
+
+    const selfieUrl = await ctx.storage.getUrl(sub.selfieStorageId);
+    const idFrontUrl = await ctx.storage.getUrl(sub.idFrontStorageId);
+    const idBackUrl = sub.idBackStorageId
+      ? await ctx.storage.getUrl(sub.idBackStorageId)
+      : null;
+    const utilityBillUrl = await ctx.storage.getUrl(sub.utilityBillStorageId);
+
+    return { ...sub, selfieUrl, idFrontUrl, idBackUrl, utilityBillUrl };
+  },
+});
