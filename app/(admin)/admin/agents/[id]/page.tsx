@@ -17,12 +17,78 @@ import {
   MessageSquare,
   AlertTriangle,
   Star,
-  MessageCircle,
 } from "lucide-react";
 import Link from "next/link";
 import HouseCard from "@/components/HouseCard";
-import { HugeiconsIcon } from "@hugeicons/react";
-import { Home09Icon } from "@hugeicons/core-free-icons";
+import { useMutation } from "convex/react";
+import { toast } from "sonner";
+
+function AdminReportsTab({ agentId }: { agentId: Id<"users"> }) {
+  const reports = useQuery(api.agentReports.getAgentReports, { agentId });
+  const dismiss = useMutation(api.agentReports.dismissReport);
+
+  async function handleDismiss(reportId: Id<"agentReports">) {
+    try {
+      await dismiss({ reportId });
+      toast.success("Report dismissed");
+    } catch (e: unknown) {
+      toast.error(e instanceof Error ? e.message : "Failed");
+    }
+  }
+
+  if (!reports)
+    return (
+      <p className="text-sm text-muted-foreground text-center py-10">
+        Loading...
+      </p>
+    );
+  if (reports.length === 0)
+    return (
+      <p className="text-sm text-muted-foreground text-center py-10">
+        No reports against this agent.
+      </p>
+    );
+
+  return (
+    <div className="space-y-3">
+      {reports.map((report) => (
+        <div
+          key={report._id}
+          className="border border-border rounded-md p-3 space-y-2"
+        >
+          <div className="flex items-start justify-between gap-2">
+            <div>
+              <p className="text-sm font-medium">{report.reporterName}</p>
+              <p className="text-xs text-muted-foreground">
+                {report.reporterEmail} · {report.reporterPhone}
+              </p>
+            </div>
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="text-xs text-muted-foreground">
+                {new Date(report.createdAt).toLocaleDateString("en-NG", {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                })}
+              </span>
+              <Button
+                size="sm"
+                variant="outline"
+                className="h-7 text-xs border-red-200 text-red-600 hover:bg-red-50"
+                onClick={() => handleDismiss(report._id)}
+              >
+                Dismiss
+              </Button>
+            </div>
+          </div>
+          <p className="text-sm text-muted-foreground border-t border-border pt-2">
+            {report.reason}
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 function StarRating({ value }: { value: number }) {
   return (
@@ -78,49 +144,43 @@ export default function AdminAgentDetailPage() {
       </button>
 
       {/* Agent info card */}
-      {/* Agent info card */}
       <Card className="shadow-none border border-border">
-        <CardContent className="pt-5">
-          {/* Mobile: column centered | Desktop: row */}
-          <div className="flex flex-col items-center text-center sm:flex-row sm:items-center sm:text-left gap-4 flex-wrap">
-            <Avatar className="w-16 h-16 sm:w-14 sm:h-14 border border-border shrink-0">
-              <AvatarImage src={agent.imageUrl} />
-              <AvatarFallback className="text-xl sm:text-lg">
-                {agent.name[0]}
-              </AvatarFallback>
-            </Avatar>
+        <CardContent className="pt-5 flex flex-col sm:flex-row items-start sm:items-center gap-4 flex-wrap">
+          <Avatar className="w-14 h-14 border border-border">
+            <AvatarImage src={agent.imageUrl} />
+            <AvatarFallback className="text-lg">{agent.name[0]}</AvatarFallback>
+          </Avatar>
 
-            <div className="flex-1 space-y-1">
-              <div className="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
-                <h2 className="text-base font-semibold">{agent.name}</h2>
-                <Badge className="bg-[#7c3aed]/10 text-[#7c3aed] border border-[#7c3aed]/30 gap-1 text-xs">
-                  <ShieldCheck className="w-3 h-3" />
-                  Verified agent
-                </Badge>
-              </div>
-              <p className="text-sm text-muted-foreground">{agent.email}</p>
-              <div className="flex flex-wrap justify-center sm:justify-start gap-4 pt-1 text-xs text-muted-foreground">
-                <span>{listings?.length ?? 0} listings</span>
-                {stats && stats.total > 0 && (
-                  <span>
-                    {stats.average} avg rating · {stats.total} reviews
-                  </span>
-                )}
-              </div>
+          <div className="flex-1 space-y-1">
+            <div className="flex items-center gap-2 flex-wrap">
+              <h2 className="text-base font-semibold">{agent.name}</h2>
+              <Badge className="bg-[#7c3aed]/10 text-[#7c3aed] border border-[#7c3aed]/30 gap-1 text-xs">
+                <ShieldCheck className="w-3 h-3" />
+                Verified agent
+              </Badge>
             </div>
+            <p className="text-sm text-muted-foreground">{agent.email}</p>
+            <div className="flex flex-wrap gap-4 pt-1 text-xs text-muted-foreground">
+              <span>{listings?.length ?? 0} listings</span>
+              {stats && stats.total > 0 && (
+                <span>
+                  {stats.average} avg rating · {stats.total} reviews
+                </span>
+              )}
+            </div>
+          </div>
 
-            <div className="flex gap-2 flex-wrap justify-center sm:justify-end">
-              <Button size="sm" variant="outline" className="text-xs h-8">
-                View KYC docs
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                className="text-xs h-8 border-red-200 text-red-600 hover:bg-red-50"
-              >
-                Remove agent
-              </Button>
-            </div>
+          <div className="flex gap-2 flex-wrap">
+            <Button size="sm" variant="outline" className="text-xs h-8">
+              View KYC docs
+            </Button>
+            <Button
+              size="sm"
+              variant="outline"
+              className="text-xs h-8 border-red-200 text-red-600 hover:bg-red-50"
+            >
+              Remove agent
+            </Button>
           </div>
         </CardContent>
       </Card>
@@ -129,17 +189,16 @@ export default function AdminAgentDetailPage() {
       <Tabs defaultValue="listings">
         <TabsList className="w-full">
           <TabsTrigger value="listings" className="flex-1 gap-1.5 text-xs">
-            <HugeiconsIcon icon={Home09Icon} />
-            {/* <Home className="w-3.5 h-3.5" /> */}
+            <Home className="w-3.5 h-3.5" />
             Listings ({listings?.length ?? 0})
           </TabsTrigger>
           <TabsTrigger value="reviews" className="flex-1 gap-1.5 text-xs">
-            <MessageCircle className="w-3.5 h-3.5" />
+            <MessageSquare className="w-3.5 h-3.5" />
             Reviews ({reviews?.length ?? 0})
           </TabsTrigger>
           <TabsTrigger value="reports" className="flex-1 gap-1.5 text-xs">
             <AlertTriangle className="w-3.5 h-3.5" />
-            Reports (0)
+            Reports
           </TabsTrigger>
         </TabsList>
 
@@ -195,11 +254,9 @@ export default function AdminAgentDetailPage() {
           )}
         </TabsContent>
 
-        {/* Reports — placeholder until agentReports table is added */}
+        {/* Reports */}
         <TabsContent value="reports" className="mt-4">
-          <p className="text-sm text-muted-foreground text-center py-10">
-            No reports against this agent.
-          </p>
+          <AdminReportsTab agentId={id as Id<"users">} />
         </TabsContent>
       </Tabs>
     </div>

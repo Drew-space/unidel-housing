@@ -125,6 +125,17 @@ export default defineSchema({
     .index("by_reviewer", ["reviewerId"])
     .index("by_agent_and_reviewer", ["agentId", "reviewerId"]),
 
+  // agent report
+
+  agentReports: defineTable({
+    agentId: v.id("users"),
+    reporterName: v.string(),
+    reporterEmail: v.string(),
+    reporterPhone: v.string(),
+    reason: v.string(),
+    createdAt: v.number(),
+  }).index("by_agent", ["agentId"]),
+
   // ── Notifications ─────────────────────────────────────────────────────
   notifications: defineTable({
     userId: v.id("users"),
