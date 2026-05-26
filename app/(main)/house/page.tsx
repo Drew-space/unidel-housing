@@ -398,13 +398,13 @@ const Hero = () => {
       <Pagination className="mt-10">
         <PaginationContent>
           <PaginationItem>
-            <PaginationPrevious
+            {/* <PaginationPrevious
               href="#"
               onClick={(e) => {
                 e.preventDefault();
                 if (page > 1) handlePrev();
               }}
-            />
+            /> */}
           </PaginationItem>
           {[...Array(page)].map((_, i) => (
             <PaginationItem key={i}>

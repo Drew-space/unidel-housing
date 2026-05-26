@@ -119,16 +119,31 @@ const Footer = () => {
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-400">
           <p>&copy; {new Date().getFullYear()} Ruum. All rights reserved.</p>
-          <p>
-            Built with <span className="text-red-400">♥</span> by{" "}
-            <Link
-              href="https://github.com/Drew-space"
-              target="_blank"
-              className="underline underline-offset-2 hover:text-[#7c3aed] transition-colors"
-            >
-              Drew
-            </Link>
-          </p>
+          <div className="flex items-center gap-4">
+            <div className="">
+              <p>
+                Built with <span className="text-red-400">♥</span> by{" "}
+                <Link
+                  href="https://github.com/Drew-space"
+                  target="_blank"
+                  className="underline underline-offset-2 hover:text-[#7c3aed] transition-colors"
+                >
+                  Drew
+                </Link>
+              </p>
+            </div>
+            <div className="">
+              <p>
+                Contact/supportus:{" "}
+                <Link
+                  className="underline"
+                  href={"mailto:supportruum@gmail.com"}
+                >
+                  supportruum@gmail.com
+                </Link>{" "}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

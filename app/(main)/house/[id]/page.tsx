@@ -157,18 +157,6 @@ const HousePage = async ({ params }: HousePageProps) => {
               </div>
             </div>
           )}
-
-          {/* Contact */}
-          {/* <div className="pt-4 border-t">
-            <h2 className="text-sm font-semibold text-gray-700 mb-3">
-              Contact landlord
-            </h2>
-            <a href={`tel:${contactPhone}`}>
-              <Button className="w-full sm:w-auto">
-                📞 Call {contactPhone}
-              </Button>
-            </a>
-          </div> */}
         </div>
       </div>
 
