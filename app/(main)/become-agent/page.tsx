@@ -17,7 +17,6 @@ const BecomeAgentPage = () => {
 
   return (
     <section className="min-h-screen flex flex-col px-4 py-6">
-      {/* 🔙 Back Button */}
       <div className="mb-6">
         <Button
           variant="ghost"

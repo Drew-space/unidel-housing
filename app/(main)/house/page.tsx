@@ -43,7 +43,7 @@ type Location =
 type RoomType = "Bed-Sitter" | "Single-Room" | "Room_and_Parlor";
 
 const MIN_PRICE = 0;
-const MAX_PRICE = 500000;
+const MAX_PRICE = 2000000;
 
 const PAGE_SIZE = 6;
 
