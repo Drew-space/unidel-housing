@@ -299,7 +299,7 @@ const Hero = () => {
                 </div> */}
 
                 <div className="space-y-1.5 sm:col-span-2 lg:col-span-1">
-                  <p className="text-xs font-medium text-muted-foreground flex items-center gap-1.5">
+                  {/* <p className="text-xs font-medium text-muted-foreground flex items-center gap-1.5">
                     Price range
                     <span className="text-[#7c3aed] font-semibold">
                       {formatPrice(minPrice)} —{" "}
@@ -307,7 +307,7 @@ const Hero = () => {
                         ? `${formatPrice(MAX_PRICE)}+`
                         : formatPrice(maxPrice)}
                     </span>
-                  </p>
+                  </p> */}
 
                   <Slider
                     min={MIN_PRICE}
