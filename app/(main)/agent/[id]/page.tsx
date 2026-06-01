@@ -219,9 +219,16 @@ export default function AgentProfilePage() {
         )}
 
         {/* Report button */}
-        <button
+        {/* <button
           onClick={() => setReportOpen(true)}
           className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-red-500 transition-colors mt-1 border border-border rounded-full px-3 py-1.5 hover:border-red-200 hover:bg-red-50"
+        >
+          <Flag className="w-3 h-3" />
+          Report agent
+        </button> */}
+        <button
+          onClick={() => setReportOpen(true)}
+          className="flex items-center gap-1.5 text-xs text-red-500 border border-red-200 bg-red-50 rounded-full px-3 py-1.5 hover:bg-red-100 hover:border-red-300 transition-colors mt-1"
         >
           <Flag className="w-3 h-3" />
           Report agent
