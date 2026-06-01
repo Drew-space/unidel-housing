@@ -31,6 +31,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { Slider } from "@/components/ui/slider";
 
 type Location =
   | "Alihame"
@@ -250,7 +251,7 @@ const Hero = () => {
                       : formatPrice(maxPrice)}
                   </span>
                 </p>
-                <div className="space-y-2 pt-1">
+                {/* <div className="space-y-2 pt-1">
                   <div className="flex items-center gap-2">
                     <span className="text-xs text-muted-foreground w-6">
                       Min
@@ -286,6 +287,41 @@ const Hero = () => {
                     />
                   </div>
                   <div className="flex justify-between text-xs text-muted-foreground">
+                    <span className="border border-border rounded px-2 py-0.5">
+                      {formatPrice(minPrice)}
+                    </span>
+                    <span className="border border-border rounded px-2 py-0.5">
+                      {maxPrice >= MAX_PRICE
+                        ? `${formatPrice(MAX_PRICE)}+`
+                        : formatPrice(maxPrice)}
+                    </span>
+                  </div>
+                </div> */}
+
+                <div className="space-y-1.5 sm:col-span-2 lg:col-span-1">
+                  <p className="text-xs font-medium text-muted-foreground flex items-center gap-1.5">
+                    Price range
+                    <span className="text-[#7c3aed] font-semibold">
+                      {formatPrice(minPrice)} —{" "}
+                      {maxPrice >= MAX_PRICE
+                        ? `${formatPrice(MAX_PRICE)}+`
+                        : formatPrice(maxPrice)}
+                    </span>
+                  </p>
+
+                  <Slider
+                    min={MIN_PRICE}
+                    max={MAX_PRICE}
+                    step={5000}
+                    value={[minPrice, maxPrice]}
+                    onValueChange={([min, max]) => {
+                      setMinPrice(min);
+                      setMaxPrice(max);
+                    }}
+                    className="mt-3 [&_[role=slider]]:bg-[#7c3aed] [&_[role=slider]]:border-[#7c3aed] [&_.range]:bg-[#7c3aed]"
+                  />
+
+                  <div className="flex justify-between text-xs text-muted-foreground mt-2">
                     <span className="border border-border rounded px-2 py-0.5">
                       {formatPrice(minPrice)}
                     </span>

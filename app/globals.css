@@ -133,3 +133,8 @@
     font-family: var(--font-inter) !important;
   }
 }
+
+.slider-thumb {
+  background-color: #7c3aed !important;
+  border-color: #7c3aed !important;
+}
