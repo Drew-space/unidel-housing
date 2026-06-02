@@ -110,7 +110,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
             <button
               key={i}
               onClick={() => setActiveImg(i)}
-              className="flex-1 rounded-lg overflow-hidden aspect-[16/10]"
+              className="flex-1 rounded-lg overflow-hidden aspect-16/10"
             >
               <img
                 src={src}
