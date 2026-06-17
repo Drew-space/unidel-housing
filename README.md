@@ -48,4 +48,4 @@ bun install
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view it. You'll need your own Convex and Clerk environment variables set up — see `.env.example` (or create one) for the required keys.
+Open [http://localhost:3000](http://localhost:3000) to view it.
