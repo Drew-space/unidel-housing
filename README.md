@@ -16,6 +16,7 @@ Students can browse verified listings, filter by room type, location, or price r
 ## How it evolved
 
 Ruum didn't start with KYC. The first version used Clerk for auth and relied on me manually editing a user's role in the Clerk dashboard before they could list a property — there was no real verification process. After getting the app in front of real agents and talking it through with my course advisor, two things became clear: search needed to be more flexible than the original three filters (room type, location, price), and agent verification needed to be a real, built-in flow rather than something I handled by hand behind the scenes. That feedback led to the global search feature and the full KYC system — including an admin dashboard where review queues, listing reports, and agent submissions are all managed in one place. All verification is currently manual by design; there's no automated identity check yet.
+![Ruum homepage](public/homepage.png)
 
 ## Features
 
@@ -25,6 +26,8 @@ Ruum didn't start with KYC. The first version used Clerk for auth and relied on 
 - Public agent profile pages showing verified status and student reviews
 - In-app messaging between students and agents on a listing
 - Reporting system so students can flag problematic agents or listings
+  ![Ruum Agent Profile](public/agent-profile.png)
+  ![Ruum Agent Kyc](public/kyc.png)
 
 ## Tech stack
 
