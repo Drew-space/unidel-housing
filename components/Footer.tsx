@@ -65,7 +65,6 @@ const Footer = () => {
               link.requiresAuth ? (
                 <SignInButton key={link.name} mode="modal">
                   <button className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#7c3aed] transition-colors w-full">
-                    {link.icon && <link.icon className="w-3.5 h-3.5" />}
                     {link.name}
                   </button>
                 </SignInButton>
